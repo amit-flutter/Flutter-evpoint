@@ -1,0 +1,18 @@
+#[State-Management] get: ^4.6.5
+    1) Instead of material app wrap with GetMaterialApp
+
+#[Service] flutter_launcher_icons: ^0.13.1
+
+    1) Add package under {dev_dependencies} & add icon in assets/images/icon.png
+        dev_dependencies:
+          flutter_launcher_icons: "^0.13.1"
+
+        flutter_launcher_icons:
+          android: "launcher_icon"
+          ios: true
+          image_path: "assets/images/icon.png"
+          min_sdk_android: 21
+
+    2) Run following command to apply icon
+        flutter pub get
+        flutter pub run flutter_launcher_icons
