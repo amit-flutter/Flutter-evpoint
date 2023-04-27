@@ -37,16 +37,17 @@ class WidgetConst {
 }
 
 class CustomElevatedButton extends StatelessWidget {
-  const CustomElevatedButton({
-    Key? key,
-    required this.onPressed,
-    required this.text,
-    this.style = StyleConst.kDefaultTextStyle,
-    this.textAlign = TextAlign.center,
-    this.maxLines = 1,
-    this.borderRadius = 7,
-    this.backgroundColor = kPrimaryColor,
-  }) : super(key: key);
+  const CustomElevatedButton(
+      {Key? key,
+      required this.onPressed,
+      required this.text,
+      this.style = StyleConst.kDefaultTextStyle,
+      this.textAlign = TextAlign.center,
+      this.maxLines = 1,
+      this.borderRadius = 25,
+      this.backgroundColor,
+      this.elevation = 15})
+      : super(key: key);
 
   final Function() onPressed;
   final String text;
@@ -54,22 +55,48 @@ class CustomElevatedButton extends StatelessWidget {
   final TextAlign textAlign;
   final int maxLines;
   final double borderRadius;
-  final Color backgroundColor;
+  final Color? backgroundColor;
+  final double elevation;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: Get.size.width,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(backgroundColor),
-          // padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-          // elevation: MaterialStateProperty.all(8),
-          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius))),
-        ),
-        child: DefaultText(text: text, maxLines: maxLines, style: style, textAlign: textAlign),
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        elevation: MaterialStateProperty.all(elevation),
+        backgroundColor: MaterialStateProperty.all(backgroundColor),
+        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius))),
       ),
+      child: DefaultText(text: text, maxLines: maxLines, style: style, textAlign: textAlign),
+    );
+  }
+}
+
+class CustomOutlineButton extends StatelessWidget {
+  const CustomOutlineButton(
+      {Key? key,
+      required this.onPressed,
+      required this.child,
+      this.borderRadius = 25,
+      this.backgroundColor,
+      this.elevation = 15})
+      : super(key: key);
+
+  final Function() onPressed;
+  final Widget child;
+  final double borderRadius;
+  final Color? backgroundColor;
+  final double elevation;
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      onPressed: onPressed,
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(backgroundColor),
+        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius))),
+      ),
+      child: child,
     );
   }
 }

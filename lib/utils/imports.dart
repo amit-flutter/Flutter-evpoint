@@ -15,6 +15,8 @@ export 'package:evpoint/utils/constant/style.dart';
 export 'package:evpoint/utils/constant/theme.dart';
 
 //Screens
+export 'package:evpoint/screen/widgets/small_widget.dart';
 export 'package:evpoint/screen/setup/splash.dart';
+export 'package:evpoint/screen/setup/welcome.dart';
 export 'package:evpoint/screen/setup/login.dart';
 export 'package:evpoint/screen/home.dart';

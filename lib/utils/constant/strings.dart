@@ -1,29 +1,39 @@
 class StringsConst {
-  //Splash Screen
-  static const String kImgLogin = 'assets/images/login_1.png';
-  static const String kImgBird = 'assets/images/bird.png';
-  static const String kImgDarkFlutter = 'assets/images/flutter.jpg';
-  static const String kImgIcon2 = 'assets/images/icon2.png';
-  static const String kImgCameraIcon = 'assets/images/camera_icon.png';
+  //Images
+  static const String kImgAppIcon = 'assets/images/icon.png';
+  static const String kImgLogin = 'assets/images/login.png';
+  static const String kImgLoginDark = 'assets/images/loginDark.png';
 
-  //Login Screen
-  static const String kLoginHeroTag = 'loginImg';
-  static const String kLoginHeadingTitle = "Hey Leslee,\nthere’s a new course about\nFigma";
-  static const String kLoginSubTitle = "Find out how our new matching tool\ncan help you learn another way";
-  static const String kDiscoverTheCourse = "Discover the course";
-  static const String kNotNow = "Not Now";
+  //Splash Screen
+  static const String kTextEvPoint = 'EVPoint';
+
+  //welcome
+  static const String kTextSkip = 'Skip';
+  static const String kTextNext = 'Next';
+
+  static const List kWelcomeNotes = [
+    [
+      'Easily find EV charging\nstations around you',
+      'Lorem ipsum dolor sit amet, consectetur \nadipiscing elit, sed do eiusmod tempor.',
+    ],
+    [
+      'Fast and simple to make\nreservation & check in',
+      'Lorem ipsum dolor sit amet, consectetur \nadipiscing elit, sed do eiusmod tempor.',
+    ],
+    [
+      'Make payments safely &\nquickly with EVPoint',
+      'Lorem ipsum dolor sit amet, consectetur \nadipiscing elit, sed do eiusmod tempor.',
+    ]
+  ];
+
+  //Login
+  static const String kTextLetsYouIn = "Let's you in";
+  static const String kTextContinue = "Continue with";
+  static const String kTextOr = "or";
+  static const String kTextSignPhoneNumber = "Sign in with Phone Number";
+  static const String kTextDonHaveAccount = "Don't have an account?";
+  static const String kTextSignUp = "Sign up";
 
   //Home Screen
   static const String kTextYourCourses = "Your courses";
-  static const String kTextPersonalStatistics = "Personal Statistics";
-  static const String kTextLearnMoreWayFaster = "Learn more way faster";
-  static const String kTextGoProNow = "Go Pro NOW and save 80%";
-
-  //Payment Screen
-  static const String kTextCreditDebitCard = "Credit / Debit Card";
-  static const String kTextNameOnCard = "Name on card";
-  static const String kTextCardNumber = "Card Number";
-  static const String kTextExpiryDate = "Expiry Date";
-  static const String kTextCVC = "CVC";
-  static const String kTextUserThisCard = "User this card";
 }

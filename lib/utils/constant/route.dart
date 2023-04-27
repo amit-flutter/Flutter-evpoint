@@ -4,6 +4,7 @@ class RouteConst {
   /// Routes name to directly navigate the route by its name
 
   static const String kSplash = "/splash";
+  static const String kWelcome = "/welcome";
   static const String kLogin = "/login";
   static const String kHome = "/home";
 
@@ -11,6 +12,7 @@ class RouteConst {
   /// You can get the reference to the above GetMaterialApp code.
   final List<GetPage> _getPages = [
     GetPage(name: kSplash, page: () => const SplashScreen()),
+    GetPage(name: kWelcome, page: () => const WelcomeScreen()),
     GetPage(name: kLogin, page: () => const LoginScreen()),
     GetPage(name: kHome, page: () => const HomeScreen()),
   ];
