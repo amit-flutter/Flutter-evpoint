@@ -7,8 +7,6 @@ class StyleConst {
     fontFamily: 'RobotoMono',
   );
 
-  static OutlineInputBorder outLineBorderStyle = OutlineInputBorder(
-    borderSide: BorderSide(color: kPrimaryColor.withOpacity(0.5), width: 2),
-    borderRadius: BorderRadius.circular(10),
-  );
+  static UnderlineInputBorder underLineBorderStyle =
+      UnderlineInputBorder(borderSide: BorderSide(color: kPrimaryColor.withOpacity(0.5), width: 2));
 }

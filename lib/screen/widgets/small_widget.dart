@@ -136,9 +136,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         children: [
           DefaultText(
             text: widget.title,
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(color: kPrimaryColor),
+            style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
           ),
-          WidgetConst.kHeightSpacer(heightMultiplier: 0.5),
           TextFormField(
             keyboardType: widget.keyBoardType,
             obscureText: widget.isSecureText && _passwordVisible,
@@ -146,7 +145,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
             controller: widget.textFieldController,
             decoration: InputDecoration(
               //  labelText: widget.title,
-              hintText: "enter ${widget.title.toLowerCase()}",
+              hintText: widget.title,
+              hintStyle: Theme.of(context)
+                  .textTheme
+                  .labelLarge!
+                  .copyWith(fontWeight: FontWeight.bold, color: kSecondaryTextColor),
 
               // hintStyle: WidgetConst.kHighLightDark18.copyWith(color: Colors.grey),
               suffixIcon: widget.isSuffixIcon
@@ -185,5 +188,118 @@ class DefaultText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(text, style: style, textAlign: textAlign, maxLines: maxLines);
+  }
+}
+
+class CustomDropDown extends StatefulWidget {
+  const CustomDropDown({Key? key, required this.title, required this.list}) : super(key: key);
+
+  final String title;
+  final List<String> list;
+
+  @override
+  State<CustomDropDown> createState() => _CustomDropDownState();
+}
+
+class _CustomDropDownState extends State<CustomDropDown> {
+  late String dropdownValue;
+  @override
+  void initState() {
+    dropdownValue = widget.list.first;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        DefaultText(
+          text: widget.title,
+          style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: 55,
+          child: DropdownButton<String>(
+            value: dropdownValue,
+            icon: const Icon(Icons.keyboard_arrow_down_rounded, color: kPrimaryColor, size: 35),
+            isExpanded: true,
+            style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+            underline: Container(height: 2, color: kPrimaryColor),
+            onChanged: (String? value) {
+              // This is called when the user selects an item.
+              setState(() {
+                dropdownValue = value!;
+              });
+            },
+            items: widget.list.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class CustomDatePicker extends StatefulWidget {
+  const CustomDatePicker({Key? key, required this.title}) : super(key: key);
+  final String title;
+  @override
+  State<CustomDatePicker> createState() => _CustomDatePickerState();
+}
+
+class _CustomDatePickerState extends State<CustomDatePicker> {
+  DateTime? selectedDate;
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate ?? DateTime.now(),
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        WidgetConst.kHeightSpacer(heightMultiplier: 3),
+        DefaultText(
+          text: widget.title,
+          style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+        ),
+        WidgetConst.kHeightSpacer(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            DefaultText(
+              text: selectedDate == null ? StringsConst.kTextDateFormat : "${selectedDate!.toLocal()}".split(' ')[0],
+              style: selectedDate == null
+                  ? Theme.of(context)
+                      .textTheme
+                      .labelLarge!
+                      .copyWith(fontWeight: FontWeight.bold, color: kSecondaryTextColor)
+                  : Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+            ),
+            IconButton(
+              onPressed: () => _selectDate(context),
+              icon: const Icon(Icons.calendar_month, color: kPrimaryColor),
+              padding: const EdgeInsets.only(top: 10, right: 7),
+              constraints: const BoxConstraints(),
+            )
+          ],
+        )
+      ],
+    );
   }
 }

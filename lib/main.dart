@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteConst.kSplash,
+      initialRoute: RouteConst.kLogin,
       getPages: RouteConst().routePages,
       theme: kLightTheme,
       darkTheme: kDarkTheme,

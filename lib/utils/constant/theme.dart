@@ -12,10 +12,24 @@ const Color kThirdTextColor = Color(0xFFFEFEFE);
 const Color kFourthTextColor = Color(0xFF26B96A);
 
 ThemeData kLightTheme = ThemeData(
-  primarySwatch: Colors.blue,
+  primarySwatch: Colors.green,
   scaffoldBackgroundColor: kScaffoldBackgroundColor,
   dividerColor: kSecondaryTextColor.withOpacity(0.7),
   brightness: Brightness.light,
+  iconTheme: const IconThemeData(color: kPrimaryColor),
+  checkboxTheme: CheckboxThemeData(
+    checkColor: MaterialStateProperty.all(kScaffoldBackgroundColor),
+    fillColor: MaterialStateProperty.all(kPrimaryColor),
+    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+  ),
+  appBarTheme: const AppBarTheme(
+    elevation: 0,
+    color: kScaffoldBackgroundColor,
+    iconTheme: IconThemeData(color: kPrimaryTextColor),
+    centerTitle: true,
+  ),
   textTheme: const TextTheme(
     bodyMedium: StyleConst.kDefaultTextStyle,
     headlineMedium: TextStyle(color: kPrimaryTextColor, fontWeight: FontWeight.w600),
@@ -31,17 +45,16 @@ ThemeData kLightTheme = ThemeData(
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
-    alignLabelWithHint: true,
     focusColor: kPrimaryColor,
-    contentPadding: const EdgeInsets.only(left: 20),
+    contentPadding: const EdgeInsets.only(top:14),
     labelStyle: StyleConst.kDefaultTextStyle,
     suffixIconColor: kPrimaryColor,
-    border: StyleConst.outLineBorderStyle,
-    enabledBorder: StyleConst.outLineBorderStyle,
-    errorBorder: StyleConst.outLineBorderStyle.copyWith(
+    border: StyleConst.underLineBorderStyle,
+    enabledBorder: StyleConst.underLineBorderStyle,
+    errorBorder: StyleConst.underLineBorderStyle.copyWith(
       borderSide: const BorderSide(color: Colors.red, width: 2),
     ),
-    focusedBorder: StyleConst.outLineBorderStyle.copyWith(
+    focusedBorder: StyleConst.underLineBorderStyle.copyWith(
       borderSide: const BorderSide(color: kPrimaryColor, width: 2),
     ),
   ),
@@ -69,10 +82,23 @@ const Color kDarkSecondaryTextColor = Color(0xFF9DA0A8);
 const Color kDarkThirdTextColor = Color(0xFFFFFFFF);
 
 ThemeData kDarkTheme = ThemeData(
-  primarySwatch: Colors.blue,
+  primarySwatch: Colors.green,
   scaffoldBackgroundColor: kDarkScaffoldBackgroundColor,
   brightness: Brightness.dark,
   dividerColor: kDarkSecondaryTextColor,
+  iconTheme: const IconThemeData(color: kDarkScaffoldBackgroundColor),
+  checkboxTheme: CheckboxThemeData(
+    checkColor: MaterialStateProperty.all(kDarkScaffoldBackgroundColor),
+    fillColor: MaterialStateProperty.all(kPrimaryColor),
+    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+  ),
+  appBarTheme: const AppBarTheme(
+    elevation: 0,
+    color: kDarkScaffoldBackgroundColor,
+    iconTheme: IconThemeData(color: kDarkPrimaryTextColor),
+  ),
   textTheme: const TextTheme(
     bodyMedium: StyleConst.kDefaultTextStyle,
     headlineMedium: TextStyle(color: kDarkPrimaryTextColor, fontWeight: FontWeight.w600),
@@ -88,17 +114,16 @@ ThemeData kDarkTheme = ThemeData(
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
-    alignLabelWithHint: true,
     focusColor: kPrimaryColor,
-    contentPadding: const EdgeInsets.only(left: 20),
+    contentPadding: const EdgeInsets.only(top:14),
     labelStyle: StyleConst.kDefaultTextStyle,
     suffixIconColor: kPrimaryColor,
-    border: StyleConst.outLineBorderStyle,
-    enabledBorder: StyleConst.outLineBorderStyle,
-    errorBorder: StyleConst.outLineBorderStyle.copyWith(
+    border: StyleConst.underLineBorderStyle,
+    enabledBorder: StyleConst.underLineBorderStyle,
+    errorBorder: StyleConst.underLineBorderStyle.copyWith(
       borderSide: const BorderSide(color: Colors.red, width: 2),
     ),
-    focusedBorder: StyleConst.outLineBorderStyle.copyWith(
+    focusedBorder: StyleConst.underLineBorderStyle.copyWith(
       borderSide: const BorderSide(color: kPrimaryColor, width: 2),
     ),
   ),

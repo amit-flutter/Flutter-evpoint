@@ -9,7 +9,7 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: SizedBox.expand(
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,9 +39,11 @@ class LoginScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            if (socialName != "Apple") Image.asset('assets/images/$socialName.png', height: 25),
-                            if (socialName == "Apple")
-                              Image.asset('assets/images/$socialName.png', height: 25, color: Colors.white),
+                            if (Theme.of(context).brightness == Brightness.light)
+                              Image.asset('assets/images/$socialName.png', height: 25),
+                            socialName != "Apple" && Theme.of(context).brightness == Brightness.dark
+                                ? Image.asset('assets/images/$socialName.png', height: 25)
+                                : Image.asset('assets/images/$socialName.png', height: 25, color: Colors.white),
                             WidgetConst.kWidthSpacer(),
                             DefaultText(
                               text: "${StringsConst.kTextContinue} $socialName",
@@ -74,7 +76,7 @@ class LoginScreen extends StatelessWidget {
                     height: 50,
                     width: Get.width,
                     child: CustomElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => Get.toNamed(RouteConst.kSignIn),
                       text: StringsConst.kTextSignPhoneNumber,
                       style: Theme.of(context).textTheme.labelLarge!.copyWith(color: kThirdTextColor),
                       backgroundColor: kPrimaryColor,
@@ -90,12 +92,15 @@ class LoginScreen extends StatelessWidget {
                           Theme.of(context).textTheme.labelLarge!.copyWith(height: 1.5, fontWeight: FontWeight.normal),
                     ),
                     WidgetConst.kWidthSpacer(),
-                    DefaultText(
-                      text: StringsConst.kTextSignUp,
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelLarge!
-                          .copyWith(height: 1.5, fontWeight: FontWeight.w600, color: kPrimaryColor),
+                    InkWell(
+                      onTap: () => Get.toNamed(RouteConst.kSignUp),
+                      child: DefaultText(
+                        text: StringsConst.kTextSignUp,
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .copyWith(height: 1.5, fontWeight: FontWeight.w600, color: kPrimaryColor),
+                      ),
                     ),
                   ],
                 ),
