@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:evpoint/utils/imports.dart';
 
 class WidgetConst {
@@ -302,4 +304,78 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
       ],
     );
   }
+}
+
+class CustomDialogUI extends StatelessWidget {
+  const CustomDialogUI({
+    Key? key,
+    required this.logoImage,
+    required this.title,
+    required this.subTitle,
+    required this.lastImage,
+  }) : super(key: key);
+
+  final String logoImage;
+  final String title;
+  final String subTitle;
+  final String lastImage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Image.asset(logoImage, height: Get.width / 2),
+        DefaultText(
+            text: title, style: Theme.of(context).textTheme.headlineSmall!.copyWith(height: 1.5, color: kPrimaryColor)),
+        WidgetConst.kHeightSpacer(),
+        DefaultText(
+          text: subTitle,
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
+          maxLines: 3,
+        ),
+        WidgetConst.kHeightSpacer(heightMultiplier: 2),
+        if (lastImage != "") Image.asset(lastImage, width: Get.width / 5),
+      ],
+    );
+  }
+}
+
+void showCustomDialog({required BuildContext context, required Widget customDialogUI}) {
+  showGeneralDialog(
+    context: context,
+    barrierLabel: "Show Dialog",
+    barrierDismissible: true,
+    barrierColor: Colors.black.withOpacity(0.5),
+    transitionDuration: const Duration(milliseconds: 700),
+    useRootNavigator: true,
+    pageBuilder: (_, __, ___) {
+      return BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+        child: Center(
+          child: Container(
+            // height: Get.height * 0.5,
+            margin: const EdgeInsets.all(30),
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+                color:
+                    Theme.of(context).brightness == Brightness.light ? kScaffoldBackgroundColor : kDarkFourthTextColor,
+                borderRadius: BorderRadius.circular(40)),
+            child: SizedBox(child: customDialogUI),
+          ),
+        ),
+      );
+    },
+    transitionBuilder: (_, anim, __, child) {
+      return SlideTransition(
+        position: Tween(
+          begin: anim.status == AnimationStatus.reverse ? const Offset(-1, 0) : const Offset(1, 0),
+          end: Offset.zero,
+        ).animate(anim),
+        child: FadeTransition(opacity: anim, child: child),
+      );
+    },
+  );
 }

@@ -39,11 +39,11 @@ class LoginScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            if (Theme.of(context).brightness == Brightness.light)
-                              Image.asset('assets/images/$socialName.png', height: 25),
-                            socialName != "Apple" && Theme.of(context).brightness == Brightness.dark
+                            Theme.of(context).brightness == Brightness.light
                                 ? Image.asset('assets/images/$socialName.png', height: 25)
-                                : Image.asset('assets/images/$socialName.png', height: 25, color: Colors.white),
+                                : socialName != "Apple"
+                                    ? Image.asset('assets/images/$socialName.png', height: 25)
+                                    : Image.asset('assets/images/$socialName.png', height: 25, color: Colors.white),
                             WidgetConst.kWidthSpacer(),
                             DefaultText(
                               text: "${StringsConst.kTextContinue} $socialName",

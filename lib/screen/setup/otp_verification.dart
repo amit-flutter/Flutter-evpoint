@@ -18,7 +18,7 @@ class OTPVerificationScreen extends StatelessWidget {
             ),
             WidgetConst.kHeightSpacer(),
             DefaultText(
-              text: StringsConst.kTextOTPCodeVerificationMessage,
+              text: StringsConst.kTextOTPCodeVerificationMessage(Get.parameters['message']!),
               style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
               textAlign: TextAlign.start,
               maxLines: 3,
@@ -63,8 +63,9 @@ class OTPVerificationScreen extends StatelessWidget {
       ),
     );
 
-    final focusedPinTheme =
-        defaultPinTheme.copyDecorationWith(border: Border.all(color: kPrimaryColor), color: kSecondaryColor);
+    final focusedPinTheme = defaultPinTheme.copyDecorationWith(
+        border: Border.all(color: kPrimaryColor),
+        color: Theme.of(context).brightness == Brightness.light ? kSecondaryColor : kDarkSecondaryColor);
 
     return Pinput(
       defaultPinTheme: defaultPinTheme,
@@ -76,7 +77,24 @@ class OTPVerificationScreen extends StatelessWidget {
       pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
       showCursor: true,
       onCompleted: (pin) {
-        if (pin == "2222") Get.offNamed(RouteConst.kCompleteYourProfile);
+        if (pin == "2222") {
+          if (Get.parameters['message']! == RouteConst.kSignUp) {
+            Get.offNamed(RouteConst.kCompleteYourProfile);
+          } else {
+            showCustomDialog(
+                context: context,
+                customDialogUI: CustomDialogUI(
+                  logoImage: Theme.of(context).brightness == Brightness.light
+                      ? StringsConst.kDoneBubble
+                      : StringsConst.kDoneBubbleDark,
+                  title: "Verification Successful!",
+                  subTitle: "Please Wait...\nYou will be directed to the homepage.",
+                  lastImage: StringsConst.kLoader,
+                ));
+            Future.delayed(const Duration(seconds: 2), () => Get.back());
+            Future.delayed(const Duration(seconds: 3), () => Get.offAllNamed(RouteConst.kHome));
+          }
+        }
       },
     );
   }

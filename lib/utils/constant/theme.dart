@@ -46,7 +46,7 @@ ThemeData kLightTheme = ThemeData(
   ),
   inputDecorationTheme: InputDecorationTheme(
     focusColor: kPrimaryColor,
-    contentPadding: const EdgeInsets.only(top:14),
+    contentPadding: const EdgeInsets.only(top: 14),
     labelStyle: StyleConst.kDefaultTextStyle,
     suffixIconColor: kPrimaryColor,
     border: StyleConst.underLineBorderStyle,
@@ -80,9 +80,23 @@ const Color kDarkScaffoldBackgroundColor = Color(0xFF181A21);
 const Color kDarkPrimaryTextColor = Color(0xFFFFFFFF);
 const Color kDarkSecondaryTextColor = Color(0xFF9DA0A8);
 const Color kDarkThirdTextColor = Color(0xFFFFFFFF);
+const Color kDarkFourthTextColor = Color(0xFF1C1F27);
 
 ThemeData kDarkTheme = ThemeData(
   primarySwatch: Colors.green,
+  colorScheme: const ColorScheme(
+    brightness: Brightness.dark,
+    primary: kDarkPrimaryColor,
+    onPrimary: kPrimaryColor,
+    secondary: kSecondaryColor,
+    onSecondary: kSecondaryColor,
+    background: kScaffoldBackgroundColor,
+    onBackground: kScaffoldBackgroundColor,
+    error: Colors.red,
+    onError: Colors.red,
+    surface: kDarkSecondaryTextColor,
+    onSurface: kDarkSecondaryTextColor,
+  ),
   scaffoldBackgroundColor: kDarkScaffoldBackgroundColor,
   brightness: Brightness.dark,
   dividerColor: kDarkSecondaryTextColor,
@@ -115,7 +129,7 @@ ThemeData kDarkTheme = ThemeData(
   ),
   inputDecorationTheme: InputDecorationTheme(
     focusColor: kPrimaryColor,
-    contentPadding: const EdgeInsets.only(top:14),
+    contentPadding: const EdgeInsets.only(top: 14),
     labelStyle: StyleConst.kDefaultTextStyle,
     suffixIconColor: kPrimaryColor,
     border: StyleConst.underLineBorderStyle,

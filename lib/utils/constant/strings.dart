@@ -5,6 +5,9 @@ class StringsConst {
   static const String kImgLoginDark = 'assets/images/loginDark.png';
   static const String kAddVehicle = 'assets/images/addVehicle.png';
   static const String kAddVehicleDark = 'assets/images/addVehicleDark.png';
+  static const String kDoneBubble = 'assets/images/doneBubble.png';
+  static const String kDoneBubbleDark = 'assets/images/doneBubbleDark.png';
+  static const String kLoader = 'assets/images/loader.png';
 
   //Splash Screen
   static const String kTextEvPoint = 'EVPoint';
@@ -44,8 +47,8 @@ class StringsConst {
 
   //OTP Code Verification
   static const String kTextOTPCodeVerification = "OTP code verification 🔐";
-  static const String kTextOTPCodeVerificationMessage =
-      "We have sent an OTP code to phone number ••• •• ••• 99. Enter the OTP code below to continue";
+  static String kTextOTPCodeVerificationMessage(String number) =>
+      "We have sent an OTP code to phone number $number. Enter the OTP code below to continue";
   static const String kTextDonTReceiveEmail = "Didn't receive email?";
   static const String kTextResendCode = "You can resend code in ";
 
@@ -64,6 +67,14 @@ class StringsConst {
   static const String kTextAddVehicleMessage = "Your vehicle is used to determine compatible charging stations";
   static const String kTextAddLater = "Add Later";
   static const String kTextAddVehicle = "Add Vehicle";
+
+  //SignIn
+  static const String kTextSignInMessage = "Please enter your phone number. You will receive an OTP code in the next "
+      "step to sign in.";
+  static const String kTextRememberMe = "Remember me";
+  static const String kTextCanTAccessYourPhone = "Can't access your phone number?";
+  static const String kTextUserEmailTOSignIn = "User email to sign in";
+  static const String kTextOrContinueWith = "or continue with";
 
   //Home Screen
   static const String kTextYourCourses = "Your courses";

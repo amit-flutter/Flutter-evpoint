@@ -82,7 +82,10 @@ class SignUpScreen extends StatelessWidget {
               width: Get.width,
               height: 50,
               child: CustomElevatedButton(
-                onPressed: () => Get.toNamed(RouteConst.kOtpVerification),
+                onPressed: () {
+                  var data = {"routeFrom": RouteConst.kSignUp, "message": "+912222222222"};
+                  Get.toNamed(RouteConst.kOtpVerification, parameters: data);
+                },
                 text: "Continue",
                 backgroundColor: kPrimaryColor,
                 style: Theme.of(context).textTheme.labelLarge!.copyWith(color: kThirdTextColor),
