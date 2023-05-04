@@ -55,7 +55,13 @@ class AddVehicleScreen extends StatelessWidget {
                   child: SizedBox(
                     height: 50,
                     child: CustomElevatedButton(
-                      onPressed: () => Get.offNamed(RouteConst.kLogin),
+                      onPressed: () {
+                        String? error = FirebaseAuthController.instance
+                            .createUserWithEmailAndPassword("a@mailinator.com", "Test@123") as String?;
+                        if (error != null) {
+                          Get.snackbar("Error", "$error");
+                        }
+                      },
                       text: StringsConst.kTextAddVehicle,
                       backgroundColor: kPrimaryColor,
                       style: Theme.of(context).textTheme.labelLarge!.copyWith(color: kThirdTextColor),

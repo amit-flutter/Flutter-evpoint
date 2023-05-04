@@ -7,8 +7,16 @@ export 'package:get/get.dart';
 export 'package:package_info_plus/package_info_plus.dart';
 
 //Packages
+export 'package:evpoint/firebase_options.dart';
 export 'package:intl_phone_field/intl_phone_field.dart';
 export 'package:pinput/pinput.dart';
+export 'package:firebase_core/firebase_core.dart';
+export 'package:firebase_auth/firebase_auth.dart';
+
+//Controller
+export 'package:evpoint/controller/network/firebase_authentication.dart';
+export 'package:evpoint/controller/network/api_calling.dart';
+export 'package:evpoint/controller/app_common.dart';
 
 //util
 export 'package:evpoint/utils/logger.dart';
@@ -26,6 +34,5 @@ export 'package:evpoint/screen/setup/sign_up.dart';
 export 'package:evpoint/screen/setup/add_vehicle.dart';
 export 'package:evpoint/screen/setup/complete_your_profile.dart';
 export 'package:evpoint/screen/setup/otp_verification.dart';
-export 'package:evpoint/screen/setup/phone_number_login.dart';
 export 'package:evpoint/screen/setup/sign_in.dart';
 export 'package:evpoint/screen/home.dart';

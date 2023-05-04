@@ -81,36 +81,44 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
             //Skip - Next Button
             WidgetConst.kHeightSpacer(),
-            const Divider(),
-            Row(
+            Column(
               children: [
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(right: 10),
-                    height: 50,
-                    child: CustomElevatedButton(
-                      onPressed: () => Get.offNamed(RouteConst.kLogin),
-                      text: StringsConst.kTextSkip,
-                      elevation: 0,
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                          color: Theme.of(context).brightness == Brightness.dark ? kThirdTextColor : kPrimaryColor),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: SizedBox(
-                    height: 50,
-                    child: CustomElevatedButton(
-                      onPressed: () async {
-                        _activePage < 2
-                            ? await _pageController.nextPage(
-                            duration: const Duration(milliseconds: 600), curve: Curves.ease)
-                            : Get.offNamed(RouteConst.kLogin);
-                      },
-                      text: StringsConst.kTextNext,
-                      backgroundColor: kPrimaryColor,
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(color: kThirdTextColor),
-                    ),
+                const Divider(),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 10),
+                          height: 50,
+                          child: CustomElevatedButton(
+                            onPressed: () => Get.offNamed(RouteConst.kLogin),
+                            text: StringsConst.kTextSkip,
+                            elevation: 0,
+                            style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                                color:
+                                    Theme.of(context).brightness == Brightness.dark ? kThirdTextColor : kPrimaryColor),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                          height: 50,
+                          child: CustomElevatedButton(
+                            onPressed: () async {
+                              _activePage < 2
+                                  ? await _pageController.nextPage(
+                                      duration: const Duration(milliseconds: 600), curve: Curves.ease)
+                                  : Get.offNamed(RouteConst.kLogin);
+                            },
+                            text: StringsConst.kTextNext,
+                            backgroundColor: kPrimaryColor,
+                            style: Theme.of(context).textTheme.labelLarge!.copyWith(color: kThirdTextColor),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

@@ -75,6 +75,9 @@ class StringsConst {
   static const String kTextCanTAccessYourPhone = "Can't access your phone number?";
   static const String kTextUserEmailTOSignIn = "User email to sign in";
   static const String kTextOrContinueWith = "or continue with";
+  static const String kTextGoogle = "Google";
+  static const String kTextApple = "Apple";
+  static const String kTextFacebook = "Facebook";
 
   //Home Screen
   static const String kTextYourCourses = "Your courses";

@@ -7,7 +7,6 @@ class RouteConst {
   static const String kWelcome = "/welcome";
   static const String kLogin = "/login";
   static const String kSignUp = "/signUp";
-  static const String kPhoneNumberLogin = "/phoneNumberLogin";
   static const String kOtpVerification = "/otpVerification";
   static const String kCompleteYourProfile = "/completeYourProfile";
   static const String kAddVehicle = "/addVehicle";
@@ -22,7 +21,6 @@ class RouteConst {
     GetPage(name: kWelcome, page: () => const WelcomeScreen()),
     GetPage(name: kLogin, page: () => const LoginScreen()),
     GetPage(name: kSignUp, page: () => const SignUpScreen()),
-    GetPage(name: kPhoneNumberLogin, page: () => const PhoneNumberLoginScreen()),
     GetPage(name: kOtpVerification, page: () => const OTPVerificationScreen()),
     GetPage(name: kCompleteYourProfile, page: () => const CompleteYourProfileScreen()),
     GetPage(name: kAddVehicle, page: () => const AddVehicleScreen()),

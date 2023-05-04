@@ -6,6 +6,7 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(),
       body: SafeArea(
         child: Padding(
@@ -37,7 +38,8 @@ class SignInScreen extends StatelessWidget {
             WidgetConst.kHeightSpacer(),
             IntlPhoneField(
               initialCountryCode: 'IN',
-              onChanged: (phone) {},
+              onSubmitted: (phone) =>
+                  FirebaseAuthController.instance.phoneAuthentication("+91$phone", RouteConst.kSignIn),
               dropdownIconPosition: IconPosition.trailing,
               dropdownIcon: const Icon(Icons.keyboard_arrow_down_rounded),
             ),
@@ -96,7 +98,11 @@ class SignInScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                for (String socialName in ['Google', 'Apple', 'Facebook'])
+                for (String socialName in [
+                  StringsConst.kTextGoogle,
+                  StringsConst.kTextApple,
+                  StringsConst.kTextFacebook
+                ])
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.all(10),
@@ -104,7 +110,7 @@ class SignInScreen extends StatelessWidget {
                       child: CustomOutlineButton(
                         backgroundColor:
                             Theme.of(context).brightness == Brightness.light ? Colors.transparent : kDarkSecondaryColor,
-                        onPressed: () {},
+                        onPressed: () => FirebaseAuthController.instance.socialLogin(socialName),
                         child: Theme.of(context).brightness == Brightness.light
                             ? Image.asset('assets/images/$socialName.png', height: 25)
                             : socialName != "Apple"

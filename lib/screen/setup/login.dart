@@ -29,13 +29,17 @@ class LoginScreen extends StatelessWidget {
                 ),
 
                 //Social Login Buttons
-                for (String socialName in ['Google', 'Facebook', 'Apple'])
+                for (String socialName in [
+                  StringsConst.kTextGoogle,
+                  StringsConst.kTextApple,
+                  StringsConst.kTextFacebook
+                ])
                   SizedBox(
                     height: 50,
                     child: CustomOutlineButton(
                         backgroundColor:
                             Theme.of(context).brightness == Brightness.light ? Colors.transparent : kDarkSecondaryColor,
-                        onPressed: () {},
+                        onPressed: () => FirebaseAuthController.instance.socialLogin(socialName),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

@@ -6,6 +6,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(),
       body: SafeArea(
         child: Padding(
@@ -37,7 +38,9 @@ class SignUpScreen extends StatelessWidget {
             WidgetConst.kHeightSpacer(),
             IntlPhoneField(
               initialCountryCode: 'IN',
-              onChanged: (phone) {},
+              onSubmitted: (phone) {
+                FirebaseAuthController.instance.phoneAuthentication("+91$phone", RouteConst.kSignUp);
+              },
               dropdownIconPosition: IconPosition.trailing,
               dropdownIcon: const Icon(Icons.keyboard_arrow_down_rounded),
             ),

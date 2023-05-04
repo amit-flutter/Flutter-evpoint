@@ -1,7 +1,11 @@
+import 'package:evpoint/controller/network/firebase_authentication.dart';
 import 'package:evpoint/utils/imports.dart';
 
-void main() {
+Future<void> main() async {
+  //Firebase initialization.
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+      .then((value) => Get.put(FirebaseAuthController()));
   runApp(const MyApp());
 }
 
@@ -13,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteConst.kLogin,
+      initialRoute: RouteConst.kSplash,
       getPages: RouteConst().routePages,
       theme: kLightTheme,
       darkTheme: kDarkTheme,

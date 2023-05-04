@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:evpoint/utils/imports.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -10,9 +11,9 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   void startTimer() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Get.offNamed(RouteConst.kWelcome);
-    });
+    // Future.delayed(const Duration(seconds: 2), () {
+    //   Get.offNamed(RouteConst.kWelcome);
+    // });
   }
 
   @override

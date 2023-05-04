@@ -76,21 +76,23 @@ class OTPVerificationScreen extends StatelessWidget {
       listenForMultipleSmsOnAndroid: false,
       pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
       showCursor: true,
-      onCompleted: (pin) {
-        if (pin == "2222") {
-          if (Get.parameters['message']! == RouteConst.kSignUp) {
+      length: 6,
+      onCompleted: (pin) async {
+        if (await FirebaseAuthController.instance.verifyOTP(pin)) {
+          if (Get.parameters['routeFrom'] == RouteConst.kSignUp) {
             Get.offNamed(RouteConst.kCompleteYourProfile);
-          } else {
+          } else if (context.mounted) {
             showCustomDialog(
-                context: context,
-                customDialogUI: CustomDialogUI(
-                  logoImage: Theme.of(context).brightness == Brightness.light
-                      ? StringsConst.kDoneBubble
-                      : StringsConst.kDoneBubbleDark,
-                  title: "Verification Successful!",
-                  subTitle: "Please Wait...\nYou will be directed to the homepage.",
-                  lastImage: StringsConst.kLoader,
-                ));
+              context: context,
+              customDialogUI: CustomDialogUI(
+                logoImage: Theme.of(context).brightness == Brightness.light
+                    ? StringsConst.kDoneBubble
+                    : StringsConst.kDoneBubbleDark,
+                title: "Verification Successful!",
+                subTitle: "Please Wait...\nYou will be directed to the homepage.",
+                lastImage: StringsConst.kLoader,
+              ),
+            );
             Future.delayed(const Duration(seconds: 2), () => Get.back());
             Future.delayed(const Duration(seconds: 3), () => Get.offAllNamed(RouteConst.kHome));
           }

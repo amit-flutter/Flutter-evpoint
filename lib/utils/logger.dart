@@ -6,7 +6,7 @@ class Logger {
   static void logPrint({isShowLog = true, required String title, String body = "", String uniquePrefix = "======>"}) {
     if (isShowLog && kDebugMode) {
       log("$uniquePrefix 📋 [${LogFindPathHelper(StackTrace.current).callerFunctionName}]");
-      log('$title 👉 $body');
+      log('${title == "ERROR" ? "🛑🛑🛑" : title} 👉 $body');
       log("~~~~~~~~~ [END] ~~~~~~~~~");
     }
   }

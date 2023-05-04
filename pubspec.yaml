@@ -27,6 +27,12 @@ dependencies:
   #network
   dio: ^5.1.1
 
+  #Firebase
+  firebase_core: ^2.10.0
+  firebase_auth: ^4.4.2
+  google_sign_in: ^6.1.0
+  firebase_crashlytics: ^3.1.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
