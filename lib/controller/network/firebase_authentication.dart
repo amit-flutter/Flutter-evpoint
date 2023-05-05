@@ -18,7 +18,7 @@ class FirebaseAuthController extends GetxController {
 
   //Setting initial screen onLoad.
   _setInitialScreen(User? user) {
-    user == null ? Get.offAllNamed(RouteConst.kLogin) : Get.offAllNamed(RouteConst.kHome);
+    user == null ? Get.offAllNamed(RouteConst.kLogin) : Get.offAllNamed(RouteConst.kPreHome);
   }
 
   //1.1 Phone Number Auth

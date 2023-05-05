@@ -9,4 +9,9 @@ class StyleConst {
 
   static UnderlineInputBorder underLineBorderStyle =
       UnderlineInputBorder(borderSide: BorderSide(color: kPrimaryColor.withOpacity(0.5), width: 2));
+
+  static OutlineInputBorder outlineNoBorder = const OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(15.0)),
+    borderSide: BorderSide.none,
+  );
 }

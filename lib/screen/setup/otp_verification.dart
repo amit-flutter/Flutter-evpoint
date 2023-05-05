@@ -94,7 +94,7 @@ class OTPVerificationScreen extends StatelessWidget {
               ),
             );
             Future.delayed(const Duration(seconds: 2), () => Get.back());
-            Future.delayed(const Duration(seconds: 3), () => Get.offAllNamed(RouteConst.kHome));
+            Future.delayed(const Duration(seconds: 3), () => Get.offAllNamed(RouteConst.kPreHome));
           }
         }
       },

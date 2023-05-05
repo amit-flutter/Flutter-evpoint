@@ -379,3 +379,32 @@ void showCustomDialog({required BuildContext context, required Widget customDial
     },
   );
 }
+
+class CustomFloatingActionButton extends StatelessWidget {
+  const CustomFloatingActionButton({super.key, required this.icon, required this.onTap});
+
+  final IconData icon;
+  final Function() onTap;
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: onTap,
+      heroTag: icon.toString(),
+      child: Container(
+          height: 70,
+          width: 70,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(50)),
+            gradient: LinearGradient(
+              begin: FractionalOffset(1, 0),
+              end: FractionalOffset(0, 1),
+              colors: [
+                Color(0xFF94DCBE),
+                Color(0xFF17C171),
+              ],
+            ),
+          ),
+          child: Icon(icon)),
+    );
+  }
+}

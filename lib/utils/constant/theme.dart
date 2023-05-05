@@ -17,6 +17,11 @@ ThemeData kLightTheme = ThemeData(
   dividerColor: kSecondaryTextColor.withOpacity(0.7),
   brightness: Brightness.light,
   iconTheme: const IconThemeData(color: kPrimaryColor),
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    backgroundColor: kScaffoldBackgroundColor,
+    selectedItemColor: kPrimaryColor,
+    unselectedItemColor: kSecondaryTextColor,
+  ),
   checkboxTheme: CheckboxThemeData(
     checkColor: MaterialStateProperty.all(kScaffoldBackgroundColor),
     fillColor: MaterialStateProperty.all(kPrimaryColor),
@@ -69,6 +74,7 @@ ThemeData kLightTheme = ThemeData(
     cursorColor: kPrimaryColor,
     selectionColor: kPrimaryColor.withOpacity(0.3),
   ),
+  floatingActionButtonTheme: FloatingActionButtonThemeData(),
 );
 
 ///Dark Colors
@@ -101,6 +107,11 @@ ThemeData kDarkTheme = ThemeData(
   brightness: Brightness.dark,
   dividerColor: kDarkSecondaryTextColor,
   iconTheme: const IconThemeData(color: kDarkScaffoldBackgroundColor),
+  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+    backgroundColor: kDarkScaffoldBackgroundColor,
+    selectedItemColor: kPrimaryColor,
+    unselectedItemColor: kSecondaryTextColor,
+  ),
   checkboxTheme: CheckboxThemeData(
     checkColor: MaterialStateProperty.all(kDarkScaffoldBackgroundColor),
     fillColor: MaterialStateProperty.all(kPrimaryColor),

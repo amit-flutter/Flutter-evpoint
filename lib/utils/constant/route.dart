@@ -12,6 +12,7 @@ class RouteConst {
   static const String kAddVehicle = "/addVehicle";
 
   static const String kSignIn = "/signIn";
+  static const String kPreHome = "/preHome";
   static const String kHome = "/home";
 
   /// Add this list variable into your GetMaterialApp as the value of getPages parameter.
@@ -25,6 +26,7 @@ class RouteConst {
     GetPage(name: kCompleteYourProfile, page: () => const CompleteYourProfileScreen()),
     GetPage(name: kAddVehicle, page: () => const AddVehicleScreen()),
     GetPage(name: kSignIn, page: () => const SignInScreen()),
+    GetPage(name: kPreHome, page: () => const PreHomeScreen()),
     GetPage(name: kHome, page: () => const HomeScreen()),
   ];
 
