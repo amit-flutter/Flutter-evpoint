@@ -11,7 +11,7 @@ class _PreHomeScreenState extends State<PreHomeScreen> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
-    Text('Search Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    SaveScreen(),
     Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
