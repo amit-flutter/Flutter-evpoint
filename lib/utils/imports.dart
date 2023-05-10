@@ -14,6 +14,9 @@ export 'package:pinput/pinput.dart';
 export 'package:firebase_core/firebase_core.dart';
 export 'package:firebase_auth/firebase_auth.dart';
 export 'package:google_maps_flutter/google_maps_flutter.dart';
+export 'package:geolocator/geolocator.dart';
+export 'package:geocoding/geocoding.dart';
+export 'package:connectivity_plus/connectivity_plus.dart';
 
 //Controller
 export 'package:evpoint/controller/network/firebase_authentication.dart';
@@ -26,6 +29,7 @@ export 'package:evpoint/utils/constant/route.dart';
 export 'package:evpoint/utils/constant/strings.dart';
 export 'package:evpoint/utils/constant/style.dart';
 export 'package:evpoint/utils/constant/theme.dart';
+export 'package:evpoint/utils/permissin_handler.dart';
 
 //Screens
 export 'package:evpoint/screen/widgets/small_widget.dart';

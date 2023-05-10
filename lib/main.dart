@@ -1,4 +1,3 @@
-import 'package:evpoint/controller/network/firebase_authentication.dart';
 import 'package:evpoint/utils/imports.dart';
 
 Future<void> main() async {

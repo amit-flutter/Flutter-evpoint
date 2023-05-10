@@ -1,6 +1,8 @@
 import 'package:evpoint/utils/imports.dart';
 
 class AppCommonController extends GetxController {
+  static AppCommonController instance = Get.find();
+
   Rx<PackageInfo> packageInfo = PackageInfo(appName: "", packageName: "", version: "", buildNumber: "").obs;
 
   @override

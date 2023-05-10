@@ -1,3 +1,4 @@
+import 'package:evpoint/controller/location.dart';
 import 'package:evpoint/utils/imports.dart';
 
 class PreHomeScreen extends StatefulWidget {
@@ -61,6 +62,25 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Widget viewWidget = const StationListView();
   bool isMapView = false;
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    LocationController _ = Get.put(LocationController());
+    AppCommonController __ = Get.put(AppCommonController());
+    getLocation();
+    super.initState();
+  }
+
+  //Get location will check user location permisssion and then make fetch location() call.
+  void getLocation() async {
+    setState(() => isLoading = true);
+
+    //Get User Permission First
+    LocationController.instance.getLocation();
+
+    setState(() => isLoading = false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,16 +97,18 @@ class _HomeScreenState extends State<HomeScreen> {
           if (isMapView) WidgetConst.kWidthSpacer(),
         ],
       ),
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 100),
-        // transitionBuilder: (Widget child, Animation<double> animation) {
-        //   return FadeTransition(opacity: animation, child: child);
-        // },
-        child: isMapView ? const StationMapView() : const StationListView(),
+      body: Stack(
+        children: [
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 100),
+            // transitionBuilder: (Widget child, Animation<double> animation) {
+            //   return FadeTransition(opacity: animation, child: child);
+            // },
+            child: isMapView ? const StationMapView() : const StationListView(),
+          ),
+          isLoading ? const Center(child: CircularProgressIndicator()) : const SizedBox.shrink()
+        ],
       ),
     );
   }
 }
-
-
-

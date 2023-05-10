@@ -15,9 +15,4 @@ class ApiCallController extends GetxController {
     final response = await dio.get('https://dart.dev');
     print(response.statusCode);
   }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 }
