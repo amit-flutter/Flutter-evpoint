@@ -30,6 +30,7 @@ export 'package:evpoint/utils/constant/strings.dart';
 export 'package:evpoint/utils/constant/style.dart';
 export 'package:evpoint/utils/constant/theme.dart';
 export 'package:evpoint/utils/permissin_handler.dart';
+export 'package:evpoint/utils/packages/read_more.dart';
 
 //Screens
 export 'package:evpoint/screen/widgets/small_widget.dart';

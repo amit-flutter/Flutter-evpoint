@@ -9,7 +9,8 @@ class StationMapView extends StatefulWidget {
 
 class _StationMapViewState extends State<StationMapView> {
   bool isInfoOpen = false;
-  BitmapDescriptor? markerIcon;
+  final Completer<GoogleMapController> _mapController = Completer();
+  static const CameraPosition _center = CameraPosition(target: LatLng(23.0602, 72.4902), zoom: 14);
 
   final List _marker = [
     ['1', const LatLng(23.0504, 72.4991), const InfoWindow(title: '1')],
@@ -19,20 +20,8 @@ class _StationMapViewState extends State<StationMapView> {
     ['5', const LatLng(23.0904, 72.4991), const InfoWindow(title: '5')],
   ];
 
-  final Completer<GoogleMapController> _mapController = Completer();
-  static const CameraPosition _center = CameraPosition(target: LatLng(23.0602, 72.4902), zoom: 14);
-
-  getIcons() async {
-    markerIcon = await BitmapDescriptor.fromAssetImage(
-      const ImageConfiguration(size: Size(300, 300), devicePixelRatio: 0.1),
-      "assets/images/evpoint.png",
-    );
-    setState(() {});
-  }
-
   @override
   void initState() {
-    getIcons();
     super.initState();
   }
 
@@ -42,24 +31,26 @@ class _StationMapViewState extends State<StationMapView> {
       body: Stack(
         alignment: Alignment.bottomCenter,
         children: [
-          GoogleMap(
-            markers: {
-              for (List i in _marker)
-                Marker(
-                  markerId: MarkerId(i[0]),
-                  position: i[1],
-                  icon: markerIcon!,
-                  onTap: () => setState(() => isInfoOpen = !isInfoOpen),
-                ),
-            },
-            onMapCreated: (GoogleMapController controller) {
-              _mapController.complete(controller);
-            },
-            mapType: MapType.terrain,
-            initialCameraPosition: _center,
-            myLocationEnabled: true,
-            myLocationButtonEnabled: false,
-          ),
+          Obx(() {
+            return GoogleMap(
+              markers: {
+                for (List i in _marker)
+                  Marker(
+                    markerId: MarkerId(i[0]),
+                    position: i[1],
+                    icon: AppCommonController.instance.markerIcon.value!,
+                    onTap: () => setState(() => isInfoOpen = !isInfoOpen),
+                  ),
+              },
+              onMapCreated: (GoogleMapController controller) {
+                _mapController.complete(controller);
+              },
+              mapType: MapType.terrain,
+              initialCameraPosition: _center,
+              myLocationEnabled: true,
+              myLocationButtonEnabled: false,
+            );
+          }),
           isInfoOpen ? const LocationInfoCard() : const SizedBox.shrink(),
         ],
       ),
@@ -203,7 +194,9 @@ class LocationInfoCard extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomOutlineButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed("${RouteConst.kHome}/${RouteConst.kViewDetailsInfo}");
+                  },
                   child: DefaultText(
                     text: "View",
                     style: Theme.of(context)

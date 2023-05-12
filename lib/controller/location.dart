@@ -15,7 +15,7 @@ class LocationController extends GetxController {
         //Get User Current position
         await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high).then((Position position) {
           _position = position;
-          Logger.logPrint(title: "Location", body: position.toString());
+          // Logger.logPrint(title: "Location", body: position.toString());
           getPLaceMarkFromCoordinates(lat: position.latitude, long: position.longitude);
         }).catchError((e) {
           debugPrint(e);
@@ -33,7 +33,7 @@ class LocationController extends GetxController {
       await placemarkFromCoordinates(lat, long).then((List<Placemark> placemarks) {
         Placemark place = placemarks[0];
         _currentAddress = '${place.street}, ${place.subLocality}, ${place.subAdministrativeArea}, ${place.postalCode}';
-        Logger.logPrint(title: "Address", body: _currentAddress ?? "");
+        // Logger.logPrint(title: "Address", body: _currentAddress ?? "");
       }).catchError((e) {
         debugPrint(e);
       });

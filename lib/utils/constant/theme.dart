@@ -10,6 +10,7 @@ const Color kPrimaryTextColor = Color(0xFF07122A);
 const Color kSecondaryTextColor = Color(0xFF9DA0A8);
 const Color kThirdTextColor = Color(0xFFFEFEFE);
 const Color kFourthTextColor = Color(0xFF26B96A);
+const Color kFifthTextColor = Color(0xFFFAFAFA);
 
 ThemeData kLightTheme = ThemeData(
   primarySwatch: Colors.green,
