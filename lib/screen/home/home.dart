@@ -91,7 +91,11 @@ class _HomeScreenState extends State<HomeScreen> {
           CustomFloatingActionButton(
               icon: isMapView ? Icons.list : Icons.map, onTap: () => setState(() => isMapView = !isMapView)),
           WidgetConst.kWidthSpacer(),
-          CustomFloatingActionButton(icon: Icons.location_on_outlined, onTap: () {}),
+          CustomFloatingActionButton(
+              icon: Icons.location_on_outlined,
+              onTap: () {
+                FirebaseAuthController.instance.logout();
+              }),
           WidgetConst.kWidthSpacer(),
           if (isMapView) CustomFloatingActionButton(icon: Icons.my_location_rounded, onTap: () {}),
           if (isMapView) WidgetConst.kWidthSpacer(),

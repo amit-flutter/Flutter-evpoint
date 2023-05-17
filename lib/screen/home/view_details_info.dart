@@ -19,185 +19,233 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            //Background Image and Back,save,send Button
-            const AppBarAndBackgroundImage(),
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                //Background Image and Back,save,send Button
+                const AppBarAndBackgroundImage(),
 
-            //Name,Address, GotoLocation Button
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //Name,Address, GotoLocation Button
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              DefaultText(
+                                text: "99 PRospect Park W",
+                                style: Theme.of(context).textTheme.headlineSmall!.copyWith(height: 1.5),
+                                textAlign: TextAlign.start,
+                              ),
+                              WidgetConst.kHeightSpacer(heightMultiplier: 0.5),
+                              DefaultText(
+                                text: "Brooklyn, 99 Projespect Park W",
+                                style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7),
+                                textAlign: TextAlign.start,
+                                maxLines: 2,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      WidgetConst.kHeightSpacer(),
+
+                      //Starts
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           DefaultText(
-                            text: "99 PRospect Park W",
-                            style: Theme.of(context).textTheme.headlineSmall!.copyWith(height: 1.5),
+                            text: "4.3",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(height: 1.7, fontWeight: FontWeight.bold),
                             textAlign: TextAlign.start,
+                            maxLines: 2,
                           ),
-                          WidgetConst.kHeightSpacer(heightMultiplier: 0.5),
+                          WidgetConst.kWidthSpacer(),
+                          for (int i = 0; i < 5; i++) const Icon(Icons.star, color: Colors.orange, size: 22),
+                          WidgetConst.kWidthSpacer(),
                           DefaultText(
-                            text: "Brooklyn, 99 Projespect Park W",
+                            text: "(107 reviews)",
                             style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7),
                             textAlign: TextAlign.start,
                             maxLines: 2,
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                  WidgetConst.kHeightSpacer(),
+                      WidgetConst.kHeightSpacer(),
 
-                  //Starts
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      DefaultText(
-                        text: "4.3",
-                        style:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.start,
-                        maxLines: 2,
+                      //Status and Distance
+                      Row(
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            padding: const EdgeInsets.all(7),
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(7), color: kPrimaryColor),
+                            child: Text(
+                              "in Use",
+                              style: Theme.of(context).textTheme.titleMedium!.copyWith(color: kScaffoldBackgroundColor),
+                              textAlign: TextAlign.start,
+                              maxLines: 2,
+                            ),
+                          ),
+                          WidgetConst.kWidthSpacer(),
+                          const Icon(Icons.location_on, size: 18),
+                          WidgetConst.kWidthSpacer(widthMultiplier: 0.5),
+                          DefaultText(
+                            text: "1.9 km",
+                            style: Theme.of(context).textTheme.titleMedium!,
+                            textAlign: TextAlign.start,
+                            maxLines: 2,
+                          ),
+                          WidgetConst.kWidthSpacer(),
+                          const Icon(Icons.cases_rounded, size: 18),
+                          WidgetConst.kWidthSpacer(widthMultiplier: 0.5),
+                          DefaultText(
+                            text: "7 mins",
+                            style: Theme.of(context).textTheme.titleMedium!,
+                            textAlign: TextAlign.start,
+                            maxLines: 2,
+                          ),
+                        ],
                       ),
-                      WidgetConst.kWidthSpacer(),
-                      for (int i = 0; i < 5; i++) const Icon(Icons.star, color: Colors.orange, size: 22),
-                      WidgetConst.kWidthSpacer(),
-                      DefaultText(
-                        text: "(107 reviews)",
-                        style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7),
-                        textAlign: TextAlign.start,
-                        maxLines: 2,
-                      ),
-                    ],
-                  ),
-                  WidgetConst.kHeightSpacer(),
+                      WidgetConst.kHeightSpacer(),
 
-                  //Status and Distance
-                  Row(
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.all(7),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(7), color: kPrimaryColor),
-                        child: Text(
-                          "in Use",
-                          style: Theme.of(context).textTheme.titleMedium!.copyWith(color: kScaffoldBackgroundColor),
-                          textAlign: TextAlign.start,
-                          maxLines: 2,
-                        ),
-                      ),
-                      WidgetConst.kWidthSpacer(),
-                      const Icon(Icons.location_on, size: 18),
-                      WidgetConst.kWidthSpacer(widthMultiplier: 0.5),
-                      DefaultText(
-                        text: "1.9 km",
-                        style: Theme.of(context).textTheme.titleMedium!,
-                        textAlign: TextAlign.start,
-                        maxLines: 2,
-                      ),
-                      WidgetConst.kWidthSpacer(),
-                      const Icon(Icons.cases_rounded, size: 18),
-                      WidgetConst.kWidthSpacer(widthMultiplier: 0.5),
-                      DefaultText(
-                        text: "7 mins",
-                        style: Theme.of(context).textTheme.titleMedium!,
-                        textAlign: TextAlign.start,
-                        maxLines: 2,
-                      ),
-                    ],
-                  ),
-                  WidgetConst.kHeightSpacer(),
-
-                  //GetDirection and Route Planner
-                  const Divider(),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: SizedBox(
-                            height: 40,
-                            child: CustomOutlineButton(
-                              backgroundColor: kPrimaryColor,
-                              onPressed: () {},
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const RotationTransition(
-                                    turns: AlwaysStoppedAnimation(330 / 360),
-                                    alignment: Alignment.topCenter,
-                                    child: Icon(Icons.send, size: 20, color: Colors.white),
+                      //GetDirection and Route Planner
+                      const Divider(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 6),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: SizedBox(
+                                height: 40,
+                                child: CustomOutlineButton(
+                                  backgroundColor: kPrimaryColor,
+                                  onPressed: () {},
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const RotationTransition(
+                                        turns: AlwaysStoppedAnimation(330 / 360),
+                                        alignment: Alignment.topCenter,
+                                        child: Icon(Icons.send, size: 20, color: Colors.white),
+                                      ),
+                                      WidgetConst.kWidthSpacer(),
+                                      DefaultText(
+                                        text: "Get Direction",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelLarge!
+                                            .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
+                                        textAlign: TextAlign.start,
+                                      ),
+                                    ],
                                   ),
-                                  WidgetConst.kWidthSpacer(),
-                                  DefaultText(
-                                    text: "Get Direction",
+                                ),
+                              ),
+                            ),
+                            WidgetConst.kWidthSpacer(),
+                            Expanded(
+                              child: SizedBox(
+                                height: 40,
+                                child: CustomOutlineButton(
+                                  onPressed: () {
+                                    // Get.toNamed("${RouteConst.kHome}/${RouteConst.kViewDetailsInfo}");
+                                  },
+                                  child: DefaultText(
+                                    text: "Route Planner",
                                     style: Theme.of(context)
                                         .textTheme
                                         .labelLarge!
-                                        .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
+                                        .copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
                                     textAlign: TextAlign.start,
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ),
+                            )
+                          ],
                         ),
-                        WidgetConst.kWidthSpacer(),
-                        Expanded(
-                          child: SizedBox(
-                            height: 40,
-                            child: CustomOutlineButton(
-                              onPressed: () {
-                                // Get.toNamed("${RouteConst.kHome}/${RouteConst.kViewDetailsInfo}");
-                              },
-                              child: DefaultText(
-                                text: "Route Planner",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelLarge!
-                                    .copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
-                                textAlign: TextAlign.start,
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  const Divider(),
+                      ),
+                      const Divider(),
 
-                  //More info
-                  WidgetConst.kHeightSpacer(),
-                  TabBar(
-                    labelColor: kPrimaryColor,
-                    controller: _tabController,
-                    unselectedLabelColor: Colors.black,
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    tabs: const [Tab(text: "Info"), Tab(text: "Charges"), Tab(text: "Check-Ins"), Tab(text: "More")],
+                      //More info
+                      WidgetConst.kHeightSpacer(),
+                      TabBar(
+                        labelColor: kPrimaryColor,
+                        controller: _tabController,
+                        unselectedLabelColor: Colors.black,
+                        indicatorSize: TabBarIndicatorSize.tab,
+                        tabs: const [
+                          Tab(text: "Info"),
+                          Tab(text: "Charges"),
+                          Tab(text: "Check-Ins"),
+                          Tab(text: "More")
+                        ],
+                      ),
+                      SizedBox(
+                        height: Get.height / 1.3,
+                        child: TabBarView(
+                          controller: _tabController,
+                          children: const [
+                            InfoSection(),
+                            Text('Person'),
+                            Text('Person'),
+                            Text('Person'),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: Get.height / 1.3,
-                    child: TabBarView(
-                      controller: _tabController,
-                      children: const [
-                        InfoSection(),
-                        Text('Person'),
-                        Text('Person'),
-                        Text('Person'),
-                      ],
+                )
+              ],
+            ),
+          ),
+          Container(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            padding: const EdgeInsets.only(bottom: 30, left: 20, right: 20, top: 10),
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 50,
+                  child: CustomOutlineButton(
+                    onPressed: () {
+                      Get.to(() => QRCodeScanner());
+                    },
+                    backgroundColor: kSecondaryColor,
+                    child: const Icon(Icons.qr_code_scanner_outlined),
+                  ),
+                ),
+                WidgetConst.kWidthSpacer(),
+                Expanded(
+                  child: SizedBox(
+                    height: 50,
+                    child: CustomOutlineButton(
+                      backgroundColor: kPrimaryColor,
+                      onPressed: () {},
+                      child: DefaultText(
+                        text: "Book",
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
+                        textAlign: TextAlign.start,
+                      ),
                     ),
                   ),
-                ],
-              ),
-            )
-          ],
-        ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -234,17 +282,17 @@ class AppBarAndBackgroundImage extends StatelessWidget {
                 child: const Icon(Icons.bookmark_outline_rounded, size: 30),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Share.share(
+                      'Checkout full EvPoint Design https://www.figma.com/file/LjFO2vpGm2yEHjpYCESOkh/EVPoint---EV-Charging-Station-Finder-App-UI-Kit-(Preview)?type=design',
+                      subject: 'Powered By CodzGarage https://www.codzgarage.com');
+                },
                 style: ElevatedButton.styleFrom(
                   shape: const CircleBorder(),
-                  padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                  padding: const EdgeInsets.all(10),
                   backgroundColor: Colors.white.withOpacity(0.5),
                 ),
-                child: const RotationTransition(
-                  turns: AlwaysStoppedAnimation(330 / 360),
-                  alignment: Alignment.centerRight,
-                  child: Icon(Icons.send, size: 30),
-                ),
+                child: const Icon(Icons.share, size: 30),
               ),
             ],
           ),
@@ -372,6 +420,7 @@ class InfoSection extends StatelessWidget {
           ),
           WidgetConst.kHeightSpacer(heightMultiplier: 2),
           const OneLocationMapView(),
+          WidgetConst.kHeightSpacer(heightMultiplier: 10),
         ],
       ),
     );
@@ -440,3 +489,5 @@ class _OneLocationMapViewState extends State<OneLocationMapView> {
     );
   }
 }
+
+

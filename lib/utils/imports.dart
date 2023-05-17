@@ -1,11 +1,14 @@
 //From Dart
 export 'package:flutter/material.dart';
 export 'package:flutter/gestures.dart';
+export 'package:flutter/foundation.dart';
 
 //Services
 export 'package:get/get.dart';
 export 'dart:async';
 export 'package:package_info_plus/package_info_plus.dart';
+export 'package:share_plus/share_plus.dart';
+export 'package:mobile_scanner/mobile_scanner.dart';
 
 //Packages
 export 'package:evpoint/firebase_options.dart';
@@ -49,6 +52,7 @@ export 'package:evpoint/screen/setup/sign_in.dart';
 export 'package:evpoint/screen/home/home.dart';
 export 'package:evpoint/screen/home/station_list_view.dart';
 export 'package:evpoint/screen/home/station_map_view.dart';
+export 'package:evpoint/screen/home/qr_scanner.dart';
 
 //Save-Home
 export 'package:evpoint/screen/save/save.dart';
