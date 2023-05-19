@@ -12,7 +12,7 @@ class _PreHomeScreenState extends State<PreHomeScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     SaveScreen(),
-    Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    MyBookingScreen(),
     Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
     Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
   ];
@@ -20,33 +20,37 @@ class _PreHomeScreenState extends State<PreHomeScreen> {
   void _onItemTapped(int index) => setState(() => _selectedIndex = index);
 
   @override
+  void initState() {
+    _selectedIndex = Get.arguments ?? 0;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined), label: "Home", activeIcon: Icon(Icons.home_rounded)),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.bookmark_outline_rounded), label: "Saved", activeIcon: Icon(Icons.bookmark_rounded)),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.playlist_add_check_circle_outlined),
-                label: "My Booking",
-                activeIcon: Icon(Icons.playlist_add_check_circle_rounded)),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.account_balance_wallet_outlined),
-                label: "My Wallet",
-                activeIcon: Icon(Icons.account_balance_wallet)),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person_outlined), label: "Account", activeIcon: Icon(Icons.person)),
-          ],
-          selectedFontSize: 15,
-          // unselectedFontSize: 15,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _selectedIndex,
-          iconSize: 30,
-          onTap: _onItemTapped,
-          elevation: 0),
+        selectedFontSize: 15,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _selectedIndex,
+        iconSize: 30,
+        onTap: _onItemTapped,
+        elevation: 0,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home", activeIcon: Icon(Icons.home_rounded)),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.bookmark_outline_rounded), label: "Saved", activeIcon: Icon(Icons.bookmark_rounded)),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.playlist_add_check_circle_outlined),
+              label: "My Booking",
+              activeIcon: Icon(Icons.playlist_add_check_circle_rounded)),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_balance_wallet_outlined),
+              label: "My Wallet",
+              activeIcon: Icon(Icons.account_balance_wallet)),
+          BottomNavigationBarItem(icon: Icon(Icons.person_outlined), label: "Account", activeIcon: Icon(Icons.person)),
+        ],
+      ),
     );
   }
 }

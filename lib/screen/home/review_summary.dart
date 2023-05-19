@@ -17,7 +17,8 @@ class ReviewSummary extends StatelessWidget {
               icon: const Icon(Icons.arrow_back, size: 34),
             ),
             title: DefaultText(
-                text: "Review Summary", style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 20)),
+                text: Get.arguments == "booking" ? "Booking Details" : "Review Summary",
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 20)),
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -64,35 +65,28 @@ class ReviewSummary extends StatelessWidget {
                     paymentAmount: '\$ 100',
                     isFinalCard: true,
                   ),
-                  Padding(
+                  Container(
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: kSecondaryColor),
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    child: CustomOutlineButton(
-                      onPressed: () {},
-                      borderRadius: 10,
-                      backgroundColor: kSecondaryColor,
-                      elevation: 0,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Icon(Icons.info),
-                            WidgetConst.kWidthSpacer(),
-                            Expanded(
-                              child: DefaultText(
-                                text: "Your e-wallet will not be charged as long as you have't charged it at the EV "
-                                    "charging station",
-                                maxLines: 3,
-                                textAlign: TextAlign.start,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(color: kSecondaryTextColor, fontWeight: FontWeight.w500),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Icon(Icons.info),
+                        WidgetConst.kWidthSpacer(),
+                        Expanded(
+                          child: DefaultText(
+                            text: "Your e-wallet will not be charged as long as you have't charged it at the EV "
+                                "charging station",
+                            maxLines: 3,
+                            textAlign: TextAlign.start,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(color: kSecondaryTextColor, fontWeight: FontWeight.w500),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ],
@@ -106,36 +100,22 @@ class ReviewSummary extends StatelessWidget {
               width: Get.width - 40,
               child: CustomOutlineButton(
                 backgroundColor: kPrimaryColor,
-                onPressed: () {
-                  showCustomDialog(
-                    context: context,
-                    customDialogUI: CustomDialogUI(
-                      logoImage: Theme.of(context).brightness == Brightness.light
-                          ? StringsConst.kDoneBubble
-                          : StringsConst.kDoneBubbleDark,
-                      title: "Booking Successful!",
-                      subTitle: "You can view booking details on the My Booking menu",
-                      lastImage: "",
-                      bottomWidget: SizedBox(
-                        width: Get.width,
-                        height: 50,
-                        child: CustomOutlineButton(
-                          backgroundColor: kPrimaryColor,
-                          onPressed: () => Get.offNamedUntil(RouteConst.kPreHome, (route) => false),
-                          child: DefaultText(
-                            text: "OK",
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge!
-                                .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
+                onPressed: () async {
+                  if (Get.arguments == "booking") {
+                    //Open Bottom Sheet
+                    await showBottomSheet(context);
+                  } else {
+                    showCancelDialog(
+                      context,
+                      "Booking Successful!",
+                      "You can view booking details on the My Booking "
+                          "menu",
+                      () => Get.offNamedUntil(RouteConst.kPreHome, (route) => false, arguments: 1),
+                    );
+                  }
                 },
                 child: DefaultText(
-                  text: "Continue",
+                  text: Get.arguments == "booking" ? "Cancel Booking" : "Continue",
                   style: Theme.of(context)
                       .textTheme
                       .labelLarge!
@@ -145,6 +125,116 @@ class ReviewSummary extends StatelessWidget {
             ),
           ),
         ]),
+      ),
+    );
+  }
+
+  Future<dynamic> showBottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+        context: context,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        builder: (builder) {
+          return SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  DefaultText(
+                    text: "Cancel Booking",
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red,
+                        ),
+                  ),
+                  const Divider(height: 40),
+                  DefaultText(
+                    text: "Are you sure you want to cancel the booking?",
+                    maxLines: 2,
+                    style: Theme.of(context).textTheme.titleLarge!,
+                  ),
+                  WidgetConst.kHeightSpacer(),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          height: 50,
+                          child: CustomElevatedButton(
+                            onPressed: () => Get.back(),
+                            text: "No,Don't Cancel",
+                            elevation: 0,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                      ),
+                      WidgetConst.kWidthSpacer(),
+                      Expanded(
+                        child: SizedBox(
+                          height: 50,
+                          child: CustomOutlineButton(
+                            backgroundColor: kPrimaryColor,
+                            onPressed: () async {
+                              Get.back();
+                              await showCancelDialog(
+                                context,
+                                "Successful Cancellation",
+                                "Your booking has been successfully cancelled.",
+                                () => Get.offNamedUntil(RouteConst.kPreHome, (route) => false, arguments: 2),
+                              );
+                            },
+                            child: DefaultText(
+                              text: "Yes, Cancel",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge!
+                                  .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
+                              textAlign: TextAlign.start,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  Future<void> showCancelDialog(BuildContext context, String title, String subtitle, Function() onTap) async {
+    return await showCustomDialog(
+      context: context,
+      customDialogUI: CustomDialogUI(
+        logoImage:
+            Theme.of(context).brightness == Brightness.light ? StringsConst.kDoneBubble : StringsConst.kDoneBubbleDark,
+        title: title,
+        subTitle: subtitle,
+        lastImage: "",
+        bottomWidget: SizedBox(
+          width: Get.width,
+          height: 50,
+          child: CustomOutlineButton(
+            backgroundColor: kPrimaryColor,
+            onPressed: onTap,
+            child: DefaultText(
+              text: "OK",
+              style: Theme.of(context)
+                  .textTheme
+                  .labelLarge!
+                  .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
+            ),
+          ),
+        ),
       ),
     );
   }

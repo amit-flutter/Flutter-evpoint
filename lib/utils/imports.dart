@@ -63,5 +63,8 @@ export 'package:evpoint/screen/home/select_time_date.dart';
 export 'package:evpoint/screen/home/select_payment_method.dart';
 export 'package:evpoint/screen/home/review_summary.dart';
 
-//Save-Home
+//Screen-Save
 export 'package:evpoint/screen/save/save.dart';
+
+//Screen-My Booking
+export 'package:evpoint/screen/booking/my_booking.dart';

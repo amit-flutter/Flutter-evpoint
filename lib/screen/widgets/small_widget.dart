@@ -38,6 +38,37 @@ class WidgetConst {
       );
 }
 
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({
+    super.key,
+    this.leading = const SizedBox(),
+    required this.title,
+    this.action = const [Padding(padding: EdgeInsets.only(right: 20), child: Icon(Icons.search, size: 30))],
+    this.bottom = const PreferredSize(preferredSize: Size(0, 0), child: SizedBox()),
+  });
+
+  final Widget leading;
+  final String title;
+  final List<Widget> action;
+  final PreferredSizeWidget bottom;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      titleSpacing: 10,
+      centerTitle: false,
+      leading: Padding(padding: const EdgeInsets.only(left: 15), child: Image.asset(StringsConst.kImgAppIcon)),
+      title: DefaultText(
+        text: title,
+        style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
+        textAlign: TextAlign.start,
+      ),
+      actions: action,
+      bottom: bottom,
+    );
+  }
+}
+
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton(
       {Key? key,
@@ -409,8 +440,8 @@ class CustomDialogUI extends StatelessWidget {
   }
 }
 
-void showCustomDialog({required BuildContext context, required Widget customDialogUI}) {
-  showGeneralDialog(
+Future<void> showCustomDialog({required BuildContext context, required Widget customDialogUI}) async {
+  await showGeneralDialog(
     context: context,
     barrierLabel: "Show Dialog",
     barrierDismissible: true,

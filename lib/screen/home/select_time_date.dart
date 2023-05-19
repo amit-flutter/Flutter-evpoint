@@ -29,32 +29,27 @@ class SelectTimeAndDate extends StatelessWidget {
                     const CustomDatePicker(title: "Select Date"),
                     const CustomTimePicker(title: "Select Time"),
                     WidgetConst.kHeightSpacer(heightMultiplier: 2),
-                    CustomOutlineButton(
-                      onPressed: () {},
-                      borderRadius: 10,
-                      backgroundColor: kSecondaryColor,
-                      elevation: 0,
-                      child: Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Icon(Icons.info),
-                            WidgetConst.kWidthSpacer(),
-                            Expanded(
-                              child: DefaultText(
-                                text: "Your e-wallet will not be charged as long as you have't charged it at the EV "
-                                    "charging station",
-                                maxLines: 3,
-                                textAlign: TextAlign.start,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(color: kSecondaryTextColor, fontWeight: FontWeight.w500),
-                              ),
-                            )
-                          ],
-                        ),
+                    Container(
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: kSecondaryColor),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Icon(Icons.info),
+                          WidgetConst.kWidthSpacer(),
+                          Expanded(
+                            child: DefaultText(
+                              text: "Your e-wallet will not be charged as long as you have't charged it at the EV "
+                                  "charging station",
+                              maxLines: 3,
+                              textAlign: TextAlign.start,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium!
+                                  .copyWith(color: kSecondaryTextColor, fontWeight: FontWeight.w500),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ],
