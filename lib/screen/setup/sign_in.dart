@@ -105,7 +105,7 @@ class SignInScreen extends StatelessWidget {
                 ])
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       height: 50,
                       child: CustomOutlineButton(
                         backgroundColor:

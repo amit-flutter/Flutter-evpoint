@@ -1,14 +1,11 @@
 import 'package:evpoint/utils/imports.dart';
 
-
-
 class QRCodeScanner extends StatelessWidget {
-  QRCodeScanner({Key? key}) : super(key: key);
-
-  MobileScannerController cameraController = MobileScannerController();
+  const QRCodeScanner({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    MobileScannerController cameraController = MobileScannerController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mobile Scanner'),
@@ -18,7 +15,7 @@ class QRCodeScanner extends StatelessWidget {
             icon: ValueListenableBuilder(
               valueListenable: cameraController.torchState,
               builder: (context, state, child) {
-                switch (state as TorchState) {
+                switch (state) {
                   case TorchState.off:
                     return const Icon(Icons.flash_off, color: Colors.grey);
                   case TorchState.on:
@@ -34,7 +31,7 @@ class QRCodeScanner extends StatelessWidget {
             icon: ValueListenableBuilder(
               valueListenable: cameraController.cameraFacingState,
               builder: (context, state, child) {
-                switch (state as CameraFacing) {
+                switch (state) {
                   case CameraFacing.front:
                     return const Icon(Icons.camera_front);
                   case CameraFacing.back:
@@ -52,7 +49,6 @@ class QRCodeScanner extends StatelessWidget {
         controller: cameraController,
         onDetect: (capture) {
           final List<Barcode> barcodes = capture.barcodes;
-          final Uint8List? image = capture.image;
           for (final barcode in barcodes) {
             debugPrint('Barcode found! ${barcode.rawValue}');
           }

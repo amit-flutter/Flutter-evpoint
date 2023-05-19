@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(),
+            const SizedBox(),
             Column(
               children: [
                 Image.asset(StringsConst.kImgAppIcon, width: 150, height: 150),
@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 )
               ],
             ),
-            SizedBox(),
+            const SizedBox(),
           ],
         ),
       ),

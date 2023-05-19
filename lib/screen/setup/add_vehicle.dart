@@ -59,7 +59,7 @@ class AddVehicleScreen extends StatelessWidget {
                         String? error = FirebaseAuthController.instance
                             .createUserWithEmailAndPassword("a@mailinator.com", "Test@123") as String?;
                         if (error != null) {
-                          Get.snackbar("Error", "$error");
+                          Get.snackbar("Error", error);
                         }
                       },
                       text: StringsConst.kTextAddVehicle,

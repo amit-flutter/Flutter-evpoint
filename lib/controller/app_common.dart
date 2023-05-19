@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_cast
+
 import 'package:evpoint/utils/imports.dart';
 
 class AppCommonController extends GetxController {

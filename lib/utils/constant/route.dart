@@ -1,4 +1,3 @@
-import 'package:evpoint/screen/home/view_details_info.dart';
 import 'package:evpoint/utils/imports.dart';
 
 class RouteConst {
@@ -15,7 +14,13 @@ class RouteConst {
   static const String kSignIn = "/signIn";
   static const String kPreHome = "/preHome";
   static const String kHome = "/home";
-  static const String kViewDetailsInfo = "/ViewDetailsInfo";
+  static const String kViewDetailsInfo = "/viewDetailsInfo";
+  static const String kGoToDirection = "/goToDirection";
+  static const String kSelectVehicle = "/selectVehicle";
+  static const String kSelectCharger = "/selectCharger";
+  static const String kSelectTimeAndDate = "/selectTimeAndDate";
+  static const String kSelectPaymentMethod = "/selectPaymentMethod";
+  static const String kReviewSummary = "/reviewSummary";
 
   /// Add this list variable into your GetMaterialApp as the value of getPages parameter.
   /// You can get the reference to the above GetMaterialApp code.
@@ -32,6 +37,12 @@ class RouteConst {
     GetPage(name: kHome, page: () => const HomeScreen(), children: [
       GetPage(name: kViewDetailsInfo, page: () => const ViewDetailsInfo()),
     ]),
+    GetPage(name: kGoToDirection, page: () => const GoToDirection()),
+    GetPage(name: kSelectVehicle, page: () => const SelectVehicle()),
+    GetPage(name: kSelectCharger, page: () => const SelectCharger()),
+    GetPage(name: kSelectTimeAndDate, page: () => const SelectTimeAndDate()),
+    GetPage(name: kSelectPaymentMethod, page: () => const SelectPaymentMethod()),
+    GetPage(name: kReviewSummary, page: () => const ReviewSummary()),
   ];
 
   get routePages => _getPages;

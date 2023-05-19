@@ -13,6 +13,6 @@ class ApiCallController extends GetxController {
 
   fetchData() async {
     final response = await dio.get('https://dart.dev');
-    print(response.statusCode);
+    Logger.logPrint(title: response.statusCode.toString());
   }
 }

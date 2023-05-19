@@ -1,3 +1,5 @@
+import 'package:evpoint/utils/imports.dart';
+
 class StringsConst {
   //Images
   static const String kImgAppIcon = 'assets/images/icon.png';
@@ -81,4 +83,28 @@ class StringsConst {
 
   //Home Screen
   static const String kTextYourCourses = "Your courses";
+
+  //Select Payment
+  static const List kSelectPayment = [
+    [Icons.credit_card_outlined, "Credit Card"],
+    [Icons.currency_bitcoin, "Bit Coins"],
+    [Icons.money_rounded, "Debit Card"],
+    [Icons.monetization_on_outlined, "UPI"],
+    [Icons.payments_outlined, "Cash"],
+  ];
+
+  static const List ren = <String>["", ""];
+
+  //Review Summary
+  static const List kReviewSummaryDate = [
+    [false, "Booking Date", "Dec 17,2024"],
+    [false, "Time of Arrival", "10:00 AM"],
+    [false, "Charging Duration", "1 Hour"],
+  ];
+
+  static const List kReviewSummaryPayment = [
+    [false, "Amount Estimation", "\$ 14.25"],
+    [true, "Tax", "Free"],
+    [false, "Total Amount", "\$ 14.23"],
+  ];
 }

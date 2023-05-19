@@ -51,7 +51,12 @@ class _StationMapViewState extends State<StationMapView> {
               myLocationButtonEnabled: false,
             );
           }),
-          isInfoOpen ? const LocationInfoCard() : const SizedBox.shrink(),
+          isInfoOpen
+              ? LocationInfoCard(
+                  backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
+                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 80),
+                )
+              : const SizedBox.shrink(),
         ],
       ),
     );
@@ -59,17 +64,20 @@ class _StationMapViewState extends State<StationMapView> {
 }
 
 class LocationInfoCard extends StatelessWidget {
-  const LocationInfoCard({super.key});
+  const LocationInfoCard({super.key, required this.backgroundColor, required this.margin});
+
+  final Color backgroundColor;
+  final EdgeInsets margin;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: Get.width,
-      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 80),
+      margin: margin,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Theme.of(context).colorScheme.onPrimaryContainer,
+        color: backgroundColor,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -98,7 +106,7 @@ class LocationInfoCard extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Get.toNamed(RouteConst.kGoToDirection),
                 style: ElevatedButton.styleFrom(
                     shape: const CircleBorder(),
                     padding: const EdgeInsets.only(right: 5),
@@ -211,7 +219,7 @@ class LocationInfoCard extends StatelessWidget {
               Expanded(
                 child: CustomOutlineButton(
                   backgroundColor: kPrimaryColor,
-                  onPressed: () {},
+                  onPressed: () => Get.toNamed(RouteConst.kSelectVehicle),
                   child: DefaultText(
                     text: "Book",
                     style: Theme.of(context)

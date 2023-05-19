@@ -10,7 +10,7 @@ const Color kPrimaryTextColor = Color(0xFF07122A);
 const Color kSecondaryTextColor = Color(0xFF9DA0A8);
 const Color kThirdTextColor = Color(0xFFFEFEFE);
 const Color kFourthTextColor = Color(0xFF26B96A);
-const Color kFifthTextColor = Color(0xFFFAFAFA);
+const Color kFifthTextColor = Color(0xFFF8F7F7);
 
 ThemeData kLightTheme = ThemeData(
   primarySwatch: Colors.green,
@@ -18,6 +18,7 @@ ThemeData kLightTheme = ThemeData(
   dividerColor: kSecondaryTextColor.withOpacity(0.7),
   brightness: Brightness.light,
   iconTheme: const IconThemeData(color: kPrimaryColor),
+  radioTheme: RadioThemeData(fillColor: MaterialStateColor.resolveWith((states) => kPrimaryColor)),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: kScaffoldBackgroundColor,
     selectedItemColor: kPrimaryColor,
@@ -75,7 +76,7 @@ ThemeData kLightTheme = ThemeData(
     cursorColor: kPrimaryColor,
     selectionColor: kPrimaryColor.withOpacity(0.3),
   ),
-  floatingActionButtonTheme: FloatingActionButtonThemeData(),
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(),
 );
 
 ///Dark Colors
@@ -108,6 +109,7 @@ ThemeData kDarkTheme = ThemeData(
   brightness: Brightness.dark,
   dividerColor: kDarkSecondaryTextColor,
   iconTheme: const IconThemeData(color: kDarkScaffoldBackgroundColor),
+  radioTheme: RadioThemeData(fillColor: MaterialStateColor.resolveWith((states) => kPrimaryColor)),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: kDarkScaffoldBackgroundColor,
     selectedItemColor: kPrimaryColor,

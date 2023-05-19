@@ -306,6 +306,69 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
   }
 }
 
+class CustomTimePicker extends StatefulWidget {
+  const CustomTimePicker({Key? key, required this.title}) : super(key: key);
+  final String title;
+  @override
+  State<CustomTimePicker> createState() => _CustomTimePickerState();
+}
+
+class _CustomTimePickerState extends State<CustomTimePicker> {
+  String selectedTime = "HH:MM";
+
+  Future<void> _selectDate(BuildContext context) async {
+    TimeOfDay? pickedTime = await showTimePicker(initialTime: TimeOfDay.now(), context: context);
+
+    if (pickedTime != null) {
+      // print(pickedTime.format(context)); //output 10:// 51 PM
+      // DateTime parsedTime = DateFormat.jm().parse(pickedTime.format(context).toString());
+      // //converting to DateTime so that we can further format on different pattern.
+      // print(parsedTime); //output 1970-01-01 22:53:00.000
+      // String formattedTime = DateFormat('HH:mm:ss').format(parsedTime);
+      // print(formattedTime); //output 14:59:00
+      // //DateFormat() is from intl package, you can format the time on any pattern you need.
+      setState(() => selectedTime = pickedTime.format(context).toString());
+    } else {
+      Logger.logPrint(title: "Time is not selected");
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        WidgetConst.kHeightSpacer(),
+        DefaultText(
+          text: widget.title,
+          style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+        ),
+        WidgetConst.kHeightSpacer(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            DefaultText(
+              text: selectedTime == "HH:MM" ? "HH:MM" : selectedTime,
+              style: selectedTime == "HH:MM"
+                  ? Theme.of(context)
+                      .textTheme
+                      .labelLarge!
+                      .copyWith(fontWeight: FontWeight.bold, color: kSecondaryTextColor)
+                  : Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+            ),
+            IconButton(
+              onPressed: () => _selectDate(context),
+              icon: const Icon(Icons.access_time_rounded, color: kPrimaryColor),
+              padding: const EdgeInsets.only(right: 7),
+              constraints: const BoxConstraints(),
+            )
+          ],
+        )
+      ],
+    );
+  }
+}
+
 class CustomDialogUI extends StatelessWidget {
   const CustomDialogUI({
     Key? key,
@@ -313,12 +376,14 @@ class CustomDialogUI extends StatelessWidget {
     required this.title,
     required this.subTitle,
     required this.lastImage,
+    this.bottomWidget = const SizedBox(),
   }) : super(key: key);
 
   final String logoImage;
   final String title;
   final String subTitle;
   final String lastImage;
+  final Widget bottomWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -338,6 +403,7 @@ class CustomDialogUI extends StatelessWidget {
         ),
         WidgetConst.kHeightSpacer(heightMultiplier: 2),
         if (lastImage != "") Image.asset(lastImage, width: Get.width / 5),
+        bottomWidget
       ],
     );
   }

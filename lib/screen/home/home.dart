@@ -1,4 +1,3 @@
-import 'package:evpoint/controller/location.dart';
 import 'package:evpoint/utils/imports.dart';
 
 class PreHomeScreen extends StatefulWidget {
@@ -66,8 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    LocationController _ = Get.put(LocationController());
-    AppCommonController __ = Get.put(AppCommonController());
+    Get.put(LocationController());
+    Get.put(AppCommonController());
     getLocation();
     super.initState();
   }

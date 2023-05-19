@@ -1,3 +1,7 @@
+import 'package:evpoint/screen/home/station_map_view.dart';
+import 'package:evpoint/screen/widgets/small_widget.dart';
+import 'package:evpoint/utils/constant/strings.dart';
+import 'package:evpoint/utils/constant/theme.dart';
 import 'package:flutter/material.dart';
 
 class SaveScreen extends StatelessWidget {
@@ -5,38 +9,41 @@ class SaveScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        decoration: BoxDecoration(),
-        height: 100,
-        width: 100,
-        // color: Colors.greenAccent,
-      ).addGradient(Colors.red, Colors.yellow).roundedCorner(Colors.cyan, 40),
+    return Scaffold(
+      appBar: const PreferredSize(preferredSize: Size.fromHeight(50.0), child: CustomAppBar()),
+      body: SafeArea(
+        child: ListView.builder(
+            itemCount: 3,
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return const LocationInfoCard(
+                backgroundColor: kFifthTextColor,
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              );
+            }),
+      ),
     );
   }
 }
 
-extension sample on Container {
-  Container roundedCorner([Color? color, int? x]) {
-    return Container(
-      // clipBehavior: Clip.antiAliasWithSaveLayer,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(x?.toDouble() ?? 20),
-        border: Border.all(),
-      ),
-      child: this,
-    );
-  }
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({
+    super.key,
+  });
 
-  Container addGradient(Color colorStart, Color colorEnd) {
-    return Container(
-      // clipBehavior: Clip.antiAliasWithSaveLayer,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
-        gradient: LinearGradient(colors: [colorStart, colorEnd]),
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      titleSpacing: 10,
+      // leadingWidth: 30,
+      centerTitle: false,
+      leading: Padding(padding: const EdgeInsets.only(left: 30), child: Image.asset(StringsConst.kImgAppIcon)),
+      title: DefaultText(
+        text: "Saved",
+        style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
+        textAlign: TextAlign.start,
       ),
-      child: this,
+      actions: const [Padding(padding: EdgeInsets.only(right: 30), child: Icon(Icons.search, size: 30))],
     );
   }
 }

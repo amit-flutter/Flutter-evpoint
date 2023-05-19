@@ -130,7 +130,7 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                                 height: 40,
                                 child: CustomOutlineButton(
                                   backgroundColor: kPrimaryColor,
-                                  onPressed: () {},
+                                  onPressed: () => Get.toNamed(RouteConst.kGoToDirection),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -218,7 +218,7 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                   height: 50,
                   child: CustomOutlineButton(
                     onPressed: () {
-                      Get.to(() => QRCodeScanner());
+                      Get.to(() => const QRCodeScanner());
                     },
                     backgroundColor: kSecondaryColor,
                     child: const Icon(Icons.qr_code_scanner_outlined),
@@ -230,7 +230,7 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                     height: 50,
                     child: CustomOutlineButton(
                       backgroundColor: kPrimaryColor,
-                      onPressed: () {},
+                      onPressed: () => Get.toNamed(RouteConst.kSelectVehicle),
                       child: DefaultText(
                         text: "Book",
                         style: Theme.of(context)
@@ -318,7 +318,7 @@ class InfoSection extends StatelessWidget {
             "In this post, we are going to see how to build a simple TabBar in Flutter. We will start with a very basic "
             "view to add a tab bar first within an AppBar. We will also see how to add icons and other "
             "customizations to a TabBar in a flutter.",
-            trimMode: TrimMode.Line,
+            trimMode: TrimMode.line,
             style: Theme.of(context).textTheme.titleMedium!.copyWith(color: kSecondaryTextColor),
           ),
           WidgetConst.kHeightSpacer(heightMultiplier: 2),
@@ -362,7 +362,7 @@ class InfoSection extends StatelessWidget {
             ),
           ),
           WidgetConst.kHeightSpacer(heightMultiplier: 2),
-          for (int i in [1, 2, 3])
+          for (int _ in [1, 2, 3])
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -379,11 +379,11 @@ class InfoSection extends StatelessWidget {
                     textAlign: TextAlign.start,
                   ),
                   const Divider(height: 30),
-                  Row(
+                  const Row(
                     children: [
                       Expanded(
                         child: Column(
-                          children: const [
+                          children: [
                             IconAndText(icon: Icons.table_restaurant, text: "Restrooms"),
                             IconAndText(icon: Icons.restaurant, text: "Restaurant"),
                             IconAndText(icon: Icons.tv, text: "Entertainment"),
@@ -393,7 +393,7 @@ class InfoSection extends StatelessWidget {
                       ),
                       Expanded(
                         child: Column(
-                          children: const [
+                          children: [
                             IconAndText(icon: Icons.roofing_sharp, text: "Lounge area"),
                             IconAndText(icon: Icons.wifi, text: "Wi-fi"),
                             IconAndText(icon: Icons.air_outlined, text: "Air for Tyres"),
@@ -461,11 +461,11 @@ class OneLocationMapView extends StatefulWidget {
 
 class _OneLocationMapViewState extends State<OneLocationMapView> {
   final Completer<GoogleMapController> _mapController = Completer();
-  CameraPosition _center = const CameraPosition(target: LatLng(23.0602, 72.4902), zoom: 14);
+  final CameraPosition _center = const CameraPosition(target: LatLng(23.0602, 72.4902), zoom: 14);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 300,
       width: Get.width,
       child: Obx(() {
@@ -489,5 +489,3 @@ class _OneLocationMapViewState extends State<OneLocationMapView> {
     );
   }
 }
-
-
