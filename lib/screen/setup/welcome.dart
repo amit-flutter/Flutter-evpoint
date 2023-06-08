@@ -39,7 +39,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   onPageChanged: (page) => setState(() => _activePage = page),
                   itemBuilder: (context, pagePosition) {
                     return Image.asset(
-                      'assets/images/welcome${Theme.of(context).brightness == Brightness.dark ? "Dark" : ""}${pagePosition + 1}.png',
+                      'assets/images/welcome${Get.theme.brightness == Brightness.dark ? "Dark" : ""}${pagePosition + 1}.png',
                     );
                   }),
             ),
@@ -47,12 +47,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             //Welcome Title and subTitle
             DefaultText(
               text: StringsConst.kWelcomeNotes[_activePage][0],
-              style: Theme.of(context).textTheme.headlineSmall!.copyWith(height: 1.5),
+              style: Get.theme.textTheme.headlineSmall!.copyWith(height: 1.5),
               maxLines: 2,
             ),
             DefaultText(
               text: StringsConst.kWelcomeNotes[0][1],
-              style: Theme.of(context).textTheme.labelLarge!.copyWith(height: 1.5, fontWeight: FontWeight.normal),
+              style: Get.theme.textTheme.labelLarge!.copyWith(height: 1.5, fontWeight: FontWeight.normal),
               maxLines: 2,
             ),
             //Progress Dot
@@ -96,9 +96,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             onPressed: () => Get.offNamed(RouteConst.kLogin),
                             text: StringsConst.kTextSkip,
                             elevation: 0,
-                            style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                            style: Get.theme.textTheme.labelLarge!.copyWith(
                                 color:
-                                    Theme.of(context).brightness == Brightness.dark ? kThirdTextColor : kPrimaryColor),
+                                    Get.theme.brightness == Brightness.dark ? kThirdTextColor : kPrimaryColor),
                           ),
                         ),
                       ),
@@ -114,7 +114,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             },
                             text: StringsConst.kTextNext,
                             backgroundColor: kPrimaryColor,
-                            style: Theme.of(context).textTheme.labelLarge!.copyWith(color: kThirdTextColor),
+                            style: Get.theme.textTheme.labelLarge!.copyWith(color: kThirdTextColor),
                           ),
                         ),
                       ),

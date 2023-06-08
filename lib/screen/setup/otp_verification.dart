@@ -14,12 +14,12 @@ class OTPVerificationScreen extends StatelessWidget {
             //Title - Message
             DefaultText(
               text: StringsConst.kTextOTPCodeVerification,
-              style: Theme.of(context).textTheme.headlineSmall!.copyWith(height: 1.5),
+              style: Get.theme.textTheme.headlineSmall!.copyWith(height: 1.5),
             ),
             WidgetConst.kHeightSpacer(),
             DefaultText(
               text: StringsConst.kTextOTPCodeVerificationMessage(Get.parameters['message']!),
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
+              style: Get.theme.textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
               textAlign: TextAlign.start,
               maxLines: 3,
             ),
@@ -33,7 +33,7 @@ class OTPVerificationScreen extends StatelessWidget {
             Center(
               child: DefaultText(
                 text: StringsConst.kTextDonTReceiveEmail,
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
+                style: Get.theme.textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
                 maxLines: 3,
               ),
             ),
@@ -41,7 +41,7 @@ class OTPVerificationScreen extends StatelessWidget {
             Center(
               child: DefaultText(
                 text: StringsConst.kTextResendCode,
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
+                style: Get.theme.textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
                 maxLines: 3,
               ),
             ),
@@ -55,7 +55,7 @@ class OTPVerificationScreen extends StatelessWidget {
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,
-      textStyle: Theme.of(context).textTheme.headlineSmall!,
+      textStyle: Get.theme.textTheme.headlineSmall!,
       decoration: BoxDecoration(
         border: Border.all(color: kDarkSecondaryTextColor.withOpacity(0.2)),
         borderRadius: BorderRadius.circular(15),
@@ -65,7 +65,7 @@ class OTPVerificationScreen extends StatelessWidget {
 
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
         border: Border.all(color: kPrimaryColor),
-        color: Theme.of(context).brightness == Brightness.light ? kSecondaryColor : kDarkSecondaryColor);
+        color: Get.theme.brightness == Brightness.light ? kSecondaryColor : kDarkSecondaryColor);
 
     return Pinput(
       defaultPinTheme: defaultPinTheme,
@@ -85,7 +85,7 @@ class OTPVerificationScreen extends StatelessWidget {
             showCustomDialog(
               context: context,
               customDialogUI: CustomDialogUI(
-                logoImage: Theme.of(context).brightness == Brightness.light
+                logoImage: Get.theme.brightness == Brightness.light
                     ? StringsConst.kDoneBubble
                     : StringsConst.kDoneBubbleDark,
                 title: "Verification Successful!",

@@ -17,7 +17,7 @@ class SelectTimeAndDate extends StatelessWidget {
               icon: const Icon(Icons.arrow_back, size: 34),
             ),
             title:
-                DefaultText(text: "Booking", style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 20)),
+                DefaultText(text: "Booking", style: Get.theme.textTheme.headlineSmall!.copyWith(fontSize: 20)),
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -43,7 +43,7 @@ class SelectTimeAndDate extends StatelessWidget {
                                   "charging station",
                               maxLines: 3,
                               textAlign: TextAlign.start,
-                              style: Theme.of(context)
+                              style: Get.theme
                                   .textTheme
                                   .titleMedium!
                                   .copyWith(color: kSecondaryTextColor, fontWeight: FontWeight.w500),
@@ -67,7 +67,7 @@ class SelectTimeAndDate extends StatelessWidget {
                 onPressed: () => Get.toNamed(RouteConst.kSelectPaymentMethod),
                 child: DefaultText(
                   text: "Continue",
-                  style: Theme.of(context)
+                  style: Get.theme
                       .textTheme
                       .labelLarge!
                       .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),

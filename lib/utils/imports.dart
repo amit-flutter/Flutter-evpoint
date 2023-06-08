@@ -10,6 +10,7 @@ export 'package:package_info_plus/package_info_plus.dart';
 export 'package:share_plus/share_plus.dart';
 export 'package:mobile_scanner/mobile_scanner.dart';
 export 'package:flutter_polyline_points/flutter_polyline_points.dart';
+export 'package:shared_preferences/shared_preferences.dart';
 
 //Packages
 export 'package:evpoint/firebase_options.dart';
@@ -30,11 +31,12 @@ export 'package:evpoint/controller/location.dart';
 
 //util
 export 'package:evpoint/utils/logger.dart';
+export 'package:evpoint/utils/shared_preferences.dart';
+export 'package:evpoint/utils/permission_handler.dart';
 export 'package:evpoint/utils/constant/route.dart';
 export 'package:evpoint/utils/constant/strings.dart';
 export 'package:evpoint/utils/constant/style.dart';
 export 'package:evpoint/utils/constant/theme.dart';
-export 'package:evpoint/utils/permissin_handler.dart';
 export 'package:evpoint/utils/packages/read_more.dart';
 
 //Screens
@@ -68,3 +70,9 @@ export 'package:evpoint/screen/save/save.dart';
 
 //Screen-My Booking
 export 'package:evpoint/screen/booking/my_booking.dart';
+
+//Screen-My Wallet
+export 'package:evpoint/screen/wallet/wallet.dart';
+
+//Screen-Account
+export 'package:evpoint/screen/account/account.dart';

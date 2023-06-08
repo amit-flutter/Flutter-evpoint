@@ -14,12 +14,12 @@ class CompleteYourProfileScreen extends StatelessWidget {
             //Title - Message
             DefaultText(
               text: StringsConst.kTextCompleteYourProfile,
-              style: Theme.of(context).textTheme.headlineSmall!.copyWith(height: 1.5),
+              style: Get.theme.textTheme.headlineSmall!.copyWith(height: 1.5),
             ),
             WidgetConst.kHeightSpacer(),
             DefaultText(
               text: StringsConst.kTextCompleteYourProfileMessage,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
+              style: Get.theme.textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
               textAlign: TextAlign.start,
               maxLines: 3,
             ),
@@ -58,7 +58,7 @@ class CompleteYourProfileScreen extends StatelessWidget {
                 onPressed: () => Get.toNamed(RouteConst.kAddVehicle),
                 text: "Continue",
                 backgroundColor: kPrimaryColor,
-                style: Theme.of(context).textTheme.labelLarge!.copyWith(color: kThirdTextColor),
+                style: Get.theme.textTheme.labelLarge!.copyWith(color: kThirdTextColor),
               ),
             )
           ]),

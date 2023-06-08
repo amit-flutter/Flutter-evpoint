@@ -23,12 +23,12 @@ class WidgetConst {
             content: Text(content),
             actions: <Widget>[
               TextButton(
-                style: TextButton.styleFrom(textStyle: Theme.of(context).textTheme.labelLarge),
+                style: TextButton.styleFrom(textStyle: Get.theme.textTheme.labelLarge),
                 onPressed: button1OnTap,
                 child: Text(button1Text),
               ),
               TextButton(
-                style: TextButton.styleFrom(textStyle: Theme.of(context).textTheme.labelLarge),
+                style: TextButton.styleFrom(textStyle: Get.theme.textTheme.labelLarge),
                 onPressed: button2OnTap,
                 child: Text(button2Text),
               ),
@@ -125,9 +125,11 @@ class CustomOutlineButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: onPressed,
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(backgroundColor),
-        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius))),
+      style: OutlinedButton.styleFrom(
+        backgroundColor: backgroundColor,
+        side: const BorderSide(color: kPrimaryColor),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
+        // shape: StadiumBorder()
       ),
       child: child,
     );
@@ -169,7 +171,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         children: [
           DefaultText(
             text: widget.title,
-            style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+            style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
           ),
           TextFormField(
             keyboardType: widget.keyBoardType,
@@ -179,10 +181,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
             decoration: InputDecoration(
               //  labelText: widget.title,
               hintText: widget.title,
-              hintStyle: Theme.of(context)
-                  .textTheme
-                  .labelLarge!
-                  .copyWith(fontWeight: FontWeight.bold, color: kSecondaryTextColor),
+              hintStyle:
+                  Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold, color: kSecondaryTextColor),
 
               // hintStyle: WidgetConst.kHighLightDark18.copyWith(color: Colors.grey),
               suffixIcon: widget.isSuffixIcon
@@ -249,7 +249,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
       children: [
         DefaultText(
           text: widget.title,
-          style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+          style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(
           height: 55,
@@ -257,7 +257,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
             value: dropdownValue,
             icon: const Icon(Icons.keyboard_arrow_down_rounded, color: kPrimaryColor, size: 35),
             isExpanded: true,
-            style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+            style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
             underline: Container(height: 2, color: kPrimaryColor),
             onChanged: (String? value) {
               // This is called when the user selects an item.
@@ -309,7 +309,7 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
         WidgetConst.kHeightSpacer(heightMultiplier: 3),
         DefaultText(
           text: widget.title,
-          style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+          style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
         ),
         WidgetConst.kHeightSpacer(),
         Row(
@@ -318,11 +318,8 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
             DefaultText(
               text: selectedDate == null ? StringsConst.kTextDateFormat : "${selectedDate!.toLocal()}".split(' ')[0],
               style: selectedDate == null
-                  ? Theme.of(context)
-                      .textTheme
-                      .labelLarge!
-                      .copyWith(fontWeight: FontWeight.bold, color: kSecondaryTextColor)
-                  : Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+                  ? Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold, color: kSecondaryTextColor)
+                  : Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
             ),
             IconButton(
               onPressed: () => _selectDate(context),
@@ -372,7 +369,7 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
         WidgetConst.kHeightSpacer(),
         DefaultText(
           text: widget.title,
-          style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+          style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
         ),
         WidgetConst.kHeightSpacer(),
         Row(
@@ -381,11 +378,8 @@ class _CustomTimePickerState extends State<CustomTimePicker> {
             DefaultText(
               text: selectedTime == "HH:MM" ? "HH:MM" : selectedTime,
               style: selectedTime == "HH:MM"
-                  ? Theme.of(context)
-                      .textTheme
-                      .labelLarge!
-                      .copyWith(fontWeight: FontWeight.bold, color: kSecondaryTextColor)
-                  : Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+                  ? Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold, color: kSecondaryTextColor)
+                  : Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
             ),
             IconButton(
               onPressed: () => _selectDate(context),
@@ -424,12 +418,11 @@ class CustomDialogUI extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Image.asset(logoImage, height: Get.width / 2),
-        DefaultText(
-            text: title, style: Theme.of(context).textTheme.headlineSmall!.copyWith(height: 1.5, color: kPrimaryColor)),
+        DefaultText(text: title, style: Get.theme.textTheme.headlineSmall!.copyWith(height: 1.5, color: kPrimaryColor)),
         WidgetConst.kHeightSpacer(),
         DefaultText(
           text: subTitle,
-          style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
+          style: Get.theme.textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
           maxLines: 3,
         ),
         WidgetConst.kHeightSpacer(heightMultiplier: 2),
@@ -457,8 +450,7 @@ Future<void> showCustomDialog({required BuildContext context, required Widget cu
             margin: const EdgeInsets.all(30),
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-                color:
-                    Theme.of(context).brightness == Brightness.light ? kScaffoldBackgroundColor : kDarkFourthTextColor,
+                color: Get.theme.brightness == Brightness.light ? kScaffoldBackgroundColor : kDarkFourthTextColor,
                 borderRadius: BorderRadius.circular(40)),
             child: SizedBox(child: customDialogUI),
           ),

@@ -1,4 +1,5 @@
 import 'package:evpoint/utils/imports.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 class StationMapView extends StatefulWidget {
   const StationMapView({super.key});
@@ -21,43 +22,40 @@ class _StationMapViewState extends State<StationMapView> {
   ];
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          Obx(() {
-            return GoogleMap(
-              markers: {
-                for (List i in _marker)
-                  Marker(
-                    markerId: MarkerId(i[0]),
-                    position: i[1],
-                    icon: AppCommonController.instance.markerIcon.value!,
-                    onTap: () => setState(() => isInfoOpen = !isInfoOpen),
-                  ),
-              },
-              onMapCreated: (GoogleMapController controller) {
-                _mapController.complete(controller);
-              },
-              mapType: MapType.terrain,
-              initialCameraPosition: _center,
-              myLocationEnabled: true,
-              myLocationButtonEnabled: false,
-            );
-          }),
-          isInfoOpen
-              ? LocationInfoCard(
-                  backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
-                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 80),
-                )
-              : const SizedBox.shrink(),
-        ],
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            Obx(() {
+              return GoogleMap(
+                markers: {
+                  for (List i in _marker)
+                    Marker(
+                      markerId: MarkerId(i[0]),
+                      position: i[1],
+                      icon: AppCommonController.instance.markerIcon.value!,
+                      onTap: () => setState(() => isInfoOpen = !isInfoOpen),
+                    ),
+                },
+                onMapCreated: (GoogleMapController controller) {
+                  _mapController.complete(controller);
+                  if (Get.theme.brightness == Brightness.dark) controller.setMapStyle(StringsConst.mapDarkString);
+                },
+                initialCameraPosition: _center,
+                myLocationEnabled: true,
+                myLocationButtonEnabled: false,
+              );
+            }),
+            isInfoOpen
+                ? LocationInfoCard(
+                    backgroundColor: Get.theme.colorScheme.onPrimaryContainer,
+                    margin: const EdgeInsets.only(left: 20, right: 20, bottom: 80),
+                  )
+                : const SizedBox.shrink(),
+          ],
+        ),
       ),
     );
   }
@@ -77,7 +75,7 @@ class LocationInfoCard extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: backgroundColor,
+        color: Get.theme.brightness == Brightness.light ? kFifthTextColor : kDarkSecondaryColor,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -92,13 +90,13 @@ class LocationInfoCard extends StatelessWidget {
                   children: [
                     DefaultText(
                       text: "99 PRospect Park W",
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+                      style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
                       textAlign: TextAlign.start,
                     ),
                     WidgetConst.kHeightSpacer(heightMultiplier: 0.5),
                     DefaultText(
                       text: "Brooklyn, 99 Projespect Park W",
-                      style: Theme.of(context).textTheme.labelMedium!,
+                      style: Get.theme.textTheme.labelMedium!,
                       textAlign: TextAlign.start,
                       maxLines: 2,
                     ),
@@ -114,7 +112,7 @@ class LocationInfoCard extends StatelessWidget {
                 child: const RotationTransition(
                     turns: AlwaysStoppedAnimation(330 / 360),
                     alignment: Alignment.topCenter,
-                    child: Icon(Icons.send, size: 20)),
+                    child: Icon(Icons.send, size: 20, color: kDarkPrimaryTextColor)),
               )
             ],
           ),
@@ -125,7 +123,7 @@ class LocationInfoCard extends StatelessWidget {
             children: [
               DefaultText(
                 text: "4.3",
-                style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+                style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.start,
                 maxLines: 2,
               ),
@@ -134,7 +132,7 @@ class LocationInfoCard extends StatelessWidget {
               WidgetConst.kWidthSpacer(),
               DefaultText(
                 text: "(107 reviews)",
-                style: Theme.of(context).textTheme.labelMedium!,
+                style: Get.theme.textTheme.labelMedium!,
                 textAlign: TextAlign.start,
                 maxLines: 2,
               ),
@@ -151,7 +149,7 @@ class LocationInfoCard extends StatelessWidget {
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(7), color: kPrimaryColor),
                 child: Text(
                   "in Use",
-                  style: Theme.of(context).textTheme.labelMedium!.copyWith(color: kScaffoldBackgroundColor),
+                  style: Get.theme.textTheme.labelMedium!.copyWith(color: kScaffoldBackgroundColor),
                   textAlign: TextAlign.start,
                   maxLines: 2,
                 ),
@@ -161,7 +159,7 @@ class LocationInfoCard extends StatelessWidget {
               WidgetConst.kWidthSpacer(widthMultiplier: 0.5),
               DefaultText(
                 text: "1.9 km",
-                style: Theme.of(context).textTheme.labelMedium!,
+                style: Get.theme.textTheme.labelMedium!,
                 textAlign: TextAlign.start,
                 maxLines: 2,
               ),
@@ -170,7 +168,7 @@ class LocationInfoCard extends StatelessWidget {
               WidgetConst.kWidthSpacer(widthMultiplier: 0.5),
               DefaultText(
                 text: "7 mins",
-                style: Theme.of(context).textTheme.labelMedium!,
+                style: Get.theme.textTheme.labelMedium!,
                 textAlign: TextAlign.start,
                 maxLines: 2,
               ),
@@ -187,8 +185,7 @@ class LocationInfoCard extends StatelessWidget {
               const Spacer(),
               DefaultText(
                 text: "3 chargers",
-                style:
-                    Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
+                style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
                 textAlign: TextAlign.start,
               ),
               WidgetConst.kWidthSpacer(),
@@ -207,10 +204,7 @@ class LocationInfoCard extends StatelessWidget {
                   },
                   child: DefaultText(
                     text: "View",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelLarge!
-                        .copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
+                    style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
                     textAlign: TextAlign.start,
                   ),
                 ),
@@ -222,9 +216,7 @@ class LocationInfoCard extends StatelessWidget {
                   onPressed: () => Get.toNamed(RouteConst.kSelectVehicle),
                   child: DefaultText(
                     text: "Book",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelLarge!
+                    style: Get.theme.textTheme.labelLarge!
                         .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
                     textAlign: TextAlign.start,
                   ),

@@ -17,7 +17,7 @@ class SelectCharger extends StatelessWidget {
               icon: const Icon(Icons.arrow_back, size: 34),
             ),
             title: DefaultText(
-                text: "Select Charger", style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 20)),
+                text: "Select Charger", style: Get.theme.textTheme.headlineSmall!.copyWith(fontSize: 20)),
           ),
           Expanded(
             child: ListView.builder(
@@ -29,7 +29,7 @@ class SelectCharger extends StatelessWidget {
                     plugType: Icon(
                       Icons.group_work_outlined,
                       size: 30,
-                      color: Theme.of(context).textTheme.titleMedium!.color,
+                      color: Get.theme.textTheme.titleMedium!.color,
                     ),
                   );
                 }),
@@ -43,7 +43,7 @@ class SelectCharger extends StatelessWidget {
               onPressed: () => Get.toNamed(RouteConst.kSelectTimeAndDate),
               child: DefaultText(
                 text: "Continue",
-                style: Theme.of(context)
+                style: Get.theme
                     .textTheme
                     .labelLarge!
                     .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
@@ -76,7 +76,7 @@ class SelectChargerCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: kFifthTextColor,
+        color: Get.theme.brightness == Brightness.light ? kFifthTextColor : kDarkSecondaryColor,
         border: Border.all(width: 0.4, color: kSecondaryTextColor),
       ),
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -94,7 +94,7 @@ class SelectChargerCard extends StatelessWidget {
                       Expanded(
                         child: DefaultText(
                           text: plugName,
-                          style: Theme.of(context)
+                          style: Get.theme
                               .textTheme
                               .titleMedium!
                               .copyWith(color: kSecondaryTextColor, fontWeight: FontWeight.w500),
@@ -103,7 +103,7 @@ class SelectChargerCard extends StatelessWidget {
                       ),
                       DefaultText(
                         text: "• AC/DC",
-                        style: Theme.of(context)
+                        style: Get.theme
                             .textTheme
                             .titleMedium!
                             .copyWith(color: kSecondaryTextColor, fontWeight: FontWeight.w500),
@@ -124,7 +124,7 @@ class SelectChargerCard extends StatelessWidget {
                 children: [
                   DefaultText(
                     text: "Max. Power",
-                    style: Theme.of(context)
+                    style: Get.theme
                         .textTheme
                         .titleMedium!
                         .copyWith(color: kSecondaryTextColor, fontWeight: FontWeight.w500),
@@ -132,7 +132,7 @@ class SelectChargerCard extends StatelessWidget {
                   ),
                   DefaultText(
                     text: maxPower,
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
+                    style: Get.theme.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
                     textAlign: TextAlign.start,
                   )
                 ],

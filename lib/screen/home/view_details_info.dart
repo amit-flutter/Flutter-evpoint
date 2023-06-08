@@ -41,13 +41,13 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                             children: [
                               DefaultText(
                                 text: "99 PRospect Park W",
-                                style: Theme.of(context).textTheme.headlineSmall!.copyWith(height: 1.5),
+                                style: Get.theme.textTheme.headlineSmall!.copyWith(height: 1.5),
                                 textAlign: TextAlign.start,
                               ),
                               WidgetConst.kHeightSpacer(heightMultiplier: 0.5),
                               DefaultText(
                                 text: "Brooklyn, 99 Projespect Park W",
-                                style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7),
+                                style: Get.theme.textTheme.titleMedium!.copyWith(height: 1.7),
                                 textAlign: TextAlign.start,
                                 maxLines: 2,
                               ),
@@ -63,10 +63,7 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                         children: [
                           DefaultText(
                             text: "4.3",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(height: 1.7, fontWeight: FontWeight.bold),
+                            style: Get.theme.textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.bold),
                             textAlign: TextAlign.start,
                             maxLines: 2,
                           ),
@@ -75,7 +72,7 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                           WidgetConst.kWidthSpacer(),
                           DefaultText(
                             text: "(107 reviews)",
-                            style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7),
+                            style: Get.theme.textTheme.titleMedium!.copyWith(height: 1.7),
                             textAlign: TextAlign.start,
                             maxLines: 2,
                           ),
@@ -92,7 +89,7 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(7), color: kPrimaryColor),
                             child: Text(
                               "in Use",
-                              style: Theme.of(context).textTheme.titleMedium!.copyWith(color: kScaffoldBackgroundColor),
+                              style: Get.theme.textTheme.titleMedium!.copyWith(color: kScaffoldBackgroundColor),
                               textAlign: TextAlign.start,
                               maxLines: 2,
                             ),
@@ -102,7 +99,7 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                           WidgetConst.kWidthSpacer(widthMultiplier: 0.5),
                           DefaultText(
                             text: "1.9 km",
-                            style: Theme.of(context).textTheme.titleMedium!,
+                            style: Get.theme.textTheme.titleMedium!,
                             textAlign: TextAlign.start,
                             maxLines: 2,
                           ),
@@ -111,7 +108,7 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                           WidgetConst.kWidthSpacer(widthMultiplier: 0.5),
                           DefaultText(
                             text: "7 mins",
-                            style: Theme.of(context).textTheme.titleMedium!,
+                            style: Get.theme.textTheme.titleMedium!,
                             textAlign: TextAlign.start,
                             maxLines: 2,
                           ),
@@ -142,9 +139,7 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                                       WidgetConst.kWidthSpacer(),
                                       DefaultText(
                                         text: "Get Direction",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .labelLarge!
+                                        style: Get.theme.textTheme.labelLarge!
                                             .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
                                         textAlign: TextAlign.start,
                                       ),
@@ -163,9 +158,7 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                                   },
                                   child: DefaultText(
                                     text: "Route Planner",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelLarge!
+                                    style: Get.theme.textTheme.labelLarge!
                                         .copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
                                     textAlign: TextAlign.start,
                                   ),
@@ -182,7 +175,8 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                       TabBar(
                         labelColor: kPrimaryColor,
                         controller: _tabController,
-                        unselectedLabelColor: Colors.black,
+                        unselectedLabelColor:
+                            Get.theme.brightness == Brightness.light ? kPrimaryTextColor : kDarkPrimaryTextColor,
                         indicatorSize: TabBarIndicatorSize.tab,
                         tabs: const [
                           Tab(text: "Info"),
@@ -210,7 +204,7 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
             ),
           ),
           Container(
-            color: Theme.of(context).scaffoldBackgroundColor,
+            color: Get.theme.scaffoldBackgroundColor,
             padding: const EdgeInsets.only(bottom: 30, left: 20, right: 20, top: 10),
             child: Row(
               children: [
@@ -233,9 +227,7 @@ class _ViewDetailsInfoState extends State<ViewDetailsInfo> with SingleTickerProv
                       onPressed: () => Get.toNamed(RouteConst.kSelectVehicle),
                       child: DefaultText(
                         text: "Book",
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge!
+                        style: Get.theme.textTheme.labelLarge!
                             .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
                         textAlign: TextAlign.start,
                       ),
@@ -312,20 +304,20 @@ class InfoSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           WidgetConst.kHeightSpacer(),
-          DefaultText(text: "About", style: Theme.of(context).textTheme.headlineSmall!),
+          DefaultText(text: "About", style: Get.theme.textTheme.headlineSmall!),
           WidgetConst.kHeightSpacer(),
           ReadMoreText(
             "In this post, we are going to see how to build a simple TabBar in Flutter. We will start with a very basic "
             "view to add a tab bar first within an AppBar. We will also see how to add icons and other "
             "customizations to a TabBar in a flutter.",
             trimMode: TrimMode.line,
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(color: kSecondaryTextColor),
+            style: Get.theme.textTheme.titleMedium!.copyWith(color: kSecondaryTextColor),
           ),
           WidgetConst.kHeightSpacer(heightMultiplier: 2),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: kFifthTextColor,
+              color: Get.theme.brightness == Brightness.light ? kFifthTextColor : kDarkSecondaryColor,
               border: Border.all(width: 0.4, color: kSecondaryTextColor),
             ),
             padding: const EdgeInsets.all(20),
@@ -336,11 +328,11 @@ class InfoSection extends StatelessWidget {
                   children: [
                     DefaultText(
                       text: "Parking",
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(color: kSecondaryTextColor),
+                      style: Get.theme.textTheme.titleMedium!.copyWith(color: kSecondaryTextColor),
                     ),
                     DefaultText(
                       text: "Pay",
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
+                      style: Get.theme.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
                     )
                   ],
                 ),
@@ -350,11 +342,11 @@ class InfoSection extends StatelessWidget {
                   children: [
                     DefaultText(
                       text: "Cost",
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(color: kSecondaryTextColor),
+                      style: Get.theme.textTheme.titleMedium!.copyWith(color: kSecondaryTextColor),
                     ),
                     DefaultText(
                       text: "Payment is required",
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
+                      style: Get.theme.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
                     )
                   ],
                 )
@@ -366,16 +358,17 @@ class InfoSection extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: kFifthTextColor,
+                color: Get.theme.brightness == Brightness.light ? kFifthTextColor : kDarkSecondaryColor,
                 border: Border.all(width: 0.4, color: kSecondaryTextColor),
               ),
               padding: const EdgeInsets.all(20),
+              margin: const EdgeInsets.only(bottom: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   DefaultText(
                     text: "Amenities",
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
+                    style: Get.theme.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
                     textAlign: TextAlign.start,
                   ),
                   const Divider(height: 30),
@@ -407,20 +400,20 @@ class InfoSection extends StatelessWidget {
               ),
             ),
           WidgetConst.kHeightSpacer(),
-          DefaultText(text: "Location", style: Theme.of(context).textTheme.headlineSmall!),
+          DefaultText(text: "Location", style: Get.theme.textTheme.headlineSmall!),
           WidgetConst.kHeightSpacer(),
           Row(
             children: [
               const Icon(Icons.room),
               DefaultText(
                 text: "Brooklyn, 567 Prospect Avenue",
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(color: kSecondaryTextColor),
+                style: Get.theme.textTheme.titleMedium!.copyWith(color: kSecondaryTextColor),
               ),
             ],
           ),
           WidgetConst.kHeightSpacer(heightMultiplier: 2),
           const OneLocationMapView(),
-          WidgetConst.kHeightSpacer(heightMultiplier: 10),
+          WidgetConst.kHeightSpacer(heightMultiplier: 30),
         ],
       ),
     );
@@ -443,7 +436,7 @@ class IconAndText extends StatelessWidget {
         Expanded(
           child: DefaultText(
             text: text,
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold, height: 2),
+            style: Get.theme.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold, height: 2),
             textAlign: TextAlign.start,
           ),
         ),
@@ -479,8 +472,8 @@ class _OneLocationMapViewState extends State<OneLocationMapView> {
           },
           onMapCreated: (GoogleMapController controller) {
             _mapController.complete(controller);
+            controller.setMapStyle(StringsConst.mapDarkString);
           },
-          mapType: MapType.terrain,
           initialCameraPosition: _center,
           myLocationEnabled: true,
           myLocationButtonEnabled: false,

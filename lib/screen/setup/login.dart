@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
               children: [
                 //Image
                 Image.asset(
-                  Theme.of(context).brightness == Brightness.light
+                  Get.theme.brightness == Brightness.light
                       ? StringsConst.kImgLogin
                       : StringsConst.kImgLoginDark,
                   height: 300,
@@ -25,7 +25,7 @@ class LoginScreen extends StatelessWidget {
                 //Welcome text
                 DefaultText(
                   text: StringsConst.kTextLetsYouIn,
-                  style: Theme.of(context).textTheme.headlineMedium!,
+                  style: Get.theme.textTheme.headlineMedium!,
                 ),
 
                 //Social Login Buttons
@@ -38,12 +38,12 @@ class LoginScreen extends StatelessWidget {
                     height: 50,
                     child: CustomOutlineButton(
                         backgroundColor:
-                            Theme.of(context).brightness == Brightness.light ? Colors.transparent : kDarkSecondaryColor,
+                            Get.theme.brightness == Brightness.light ? Colors.transparent : kDarkSecondaryColor,
                         onPressed: () => FirebaseAuthController.instance.socialLogin(socialName),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Theme.of(context).brightness == Brightness.light
+                            Get.theme.brightness == Brightness.light
                                 ? Image.asset('assets/images/$socialName.png', height: 25)
                                 : socialName != "Apple"
                                     ? Image.asset('assets/images/$socialName.png', height: 25)
@@ -51,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                             WidgetConst.kWidthSpacer(),
                             DefaultText(
                               text: "${StringsConst.kTextContinue} $socialName",
-                              style: Theme.of(context)
+                              style: Get.theme
                                   .textTheme
                                   .labelLarge!
                                   .copyWith(height: 1.5, fontWeight: FontWeight.w500),
@@ -68,7 +68,7 @@ class LoginScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: DefaultText(
                         text: StringsConst.kTextOr,
-                        style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w400),
+                        style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w400),
                       ),
                     ),
                     const Expanded(child: Divider()),
@@ -82,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                     child: CustomElevatedButton(
                       onPressed: () => Get.toNamed(RouteConst.kSignIn),
                       text: StringsConst.kTextSignPhoneNumber,
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(color: kThirdTextColor),
+                      style: Get.theme.textTheme.labelLarge!.copyWith(color: kThirdTextColor),
                       backgroundColor: kPrimaryColor,
                     )),
 
@@ -93,14 +93,14 @@ class LoginScreen extends StatelessWidget {
                     DefaultText(
                       text: StringsConst.kTextDonHaveAccount,
                       style:
-                          Theme.of(context).textTheme.labelLarge!.copyWith(height: 1.5, fontWeight: FontWeight.normal),
+                          Get.theme.textTheme.labelLarge!.copyWith(height: 1.5, fontWeight: FontWeight.normal),
                     ),
                     WidgetConst.kWidthSpacer(),
                     InkWell(
                       onTap: () => Get.toNamed(RouteConst.kSignUp),
                       child: DefaultText(
                         text: StringsConst.kTextSignUp,
-                        style: Theme.of(context)
+                        style: Get.theme
                             .textTheme
                             .labelLarge!
                             .copyWith(height: 1.5, fontWeight: FontWeight.w600, color: kPrimaryColor),

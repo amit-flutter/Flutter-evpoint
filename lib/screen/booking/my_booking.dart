@@ -11,16 +11,17 @@ class MyBookingScreen extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(100.0),
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(100.0),
           child: CustomAppBar(
             title: "My Booking",
             bottom: TabBar(
               labelColor: kPrimaryColor,
-              unselectedLabelColor: Colors.black,
+              unselectedLabelColor:
+                  Get.theme.brightness == Brightness.light ? kPrimaryTextColor : kDarkPrimaryTextColor,
               indicatorSize: TabBarIndicatorSize.tab,
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              tabs: [Tab(text: "Upcoming"), Tab(text: "Complete"), Tab(text: "Canceled")],
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              tabs: const [Tab(text: "Upcoming"), Tab(text: "Complete"), Tab(text: "Canceled")],
             ),
           ),
         ),
@@ -51,7 +52,7 @@ class BookingCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: kFifthTextColor,
+        color: Get.theme.brightness == Brightness.light ? kFifthTextColor : kDarkSecondaryColor,
         border: Border.all(width: 0.4, color: kSecondaryTextColor),
       ),
       margin: const EdgeInsets.symmetric(vertical: 10),
@@ -64,9 +65,9 @@ class BookingCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  DefaultText(text: "Date 05, 2024", style: Theme.of(context).textTheme.titleMedium!),
+                  DefaultText(text: "Date 05, 2024", style: Get.theme.textTheme.titleMedium!),
                   DefaultText(
-                      text: "Time 12:44 PM", style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 2)),
+                      text: "Time 12:44 PM", style: Get.theme.textTheme.titleMedium!.copyWith(height: 2)),
                 ],
               ),
             ),
@@ -77,7 +78,7 @@ class BookingCard extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        DefaultText(text: "Remind me", style: Theme.of(context).textTheme.titleMedium!),
+                        DefaultText(text: "Remind me", style: Get.theme.textTheme.titleMedium!),
                         Transform.scale(scale: 0.8, child: CupertinoSwitch(value: true, onChanged: (val) {}))
                       ],
                     ),
@@ -89,7 +90,7 @@ class BookingCard extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     child: DefaultText(
                       text: bookingType == BookingType.complete ? "Complete" : "Cancelled",
-                      style: Theme.of(context)
+                      style: Get.theme
                           .textTheme
                           .labelLarge!
                           .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
@@ -109,11 +110,11 @@ class BookingCard extends StatelessWidget {
                 children: [
                   DefaultText(
                     text: "99 PRospect Park W",
-                    style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
+                    style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold),
                   ),
                   DefaultText(
                     text: "Brooklyn, 99 Projespect Park W",
-                    style: Theme.of(context).textTheme.labelMedium!.copyWith(height: 2),
+                    style: Get.theme.textTheme.labelMedium!.copyWith(height: 2),
                     maxLines: 2,
                   ),
                 ],
@@ -138,13 +139,13 @@ class BookingCard extends StatelessWidget {
         IntrinsicHeight(
           child: Row(
             children: [
-              getTitleAndSubtitle(context, "Tesla (Plug)", ""),
+              getTitleAndSubtitle("Tesla (Plug)", ""),
               const VerticalDivider(thickness: 1.2),
-              getTitleAndSubtitle(context, "Max.Power", "100 kW"),
+              getTitleAndSubtitle("Max.Power", "100 kW"),
               const VerticalDivider(thickness: 1.2),
-              getTitleAndSubtitle(context, "Duration", "1 hour"),
+              getTitleAndSubtitle("Duration", "1 hour"),
               const VerticalDivider(thickness: 1.2),
-              getTitleAndSubtitle(context, "Amount", "\$14.25"),
+              getTitleAndSubtitle("Amount", "\$14.25"),
             ],
           ),
         ),
@@ -160,7 +161,7 @@ class BookingCard extends StatelessWidget {
                 },
                 child: DefaultText(
                   text: bookingType == BookingType.upcoming ? "Cancel Booking" : "View",
-                  style: Theme.of(context)
+                  style: Get.theme
                       .textTheme
                       .labelLarge!
                       .copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
@@ -176,7 +177,7 @@ class BookingCard extends StatelessWidget {
                   onPressed: () => Get.toNamed(RouteConst.kReviewSummary, arguments: "booking"),
                   child: DefaultText(
                     text: bookingType == BookingType.upcoming ? "View" : "Booking Again",
-                    style: Theme.of(context)
+                    style: Get.theme
                         .textTheme
                         .labelLarge!
                         .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
@@ -189,7 +190,10 @@ class BookingCard extends StatelessWidget {
 
         if (bookingType == BookingType.upcoming)
           Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: kSecondaryColor),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Get.theme.brightness == Brightness.light ? kSecondaryColor : kPrimaryColor.withOpacity(0.4),
+            ),
             margin: const EdgeInsets.only(top: 10),
             padding: const EdgeInsets.all(10),
             child: Row(
@@ -203,7 +207,7 @@ class BookingCard extends StatelessWidget {
                         "charging station",
                     maxLines: 3,
                     textAlign: TextAlign.start,
-                    style: Theme.of(context)
+                    style: Get.theme
                         .textTheme
                         .titleMedium!
                         .copyWith(color: kSecondaryTextColor, fontWeight: FontWeight.w500),
@@ -216,20 +220,20 @@ class BookingCard extends StatelessWidget {
     );
   }
 
-  Expanded getTitleAndSubtitle(BuildContext context, String title, String subtitle) {
+  Expanded getTitleAndSubtitle(String title, String subtitle) {
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           DefaultText(
             text: title,
-            style: Theme.of(context).textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w300),
+            style: Get.theme.textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w300),
             textAlign: TextAlign.start,
           ),
           if (subtitle != "")
             DefaultText(
               text: subtitle,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold, height: 2),
+              style: Get.theme.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold, height: 2),
               textAlign: TextAlign.center,
             ),
           if (subtitle == "") const Padding(padding: EdgeInsets.only(top: 6), child: Icon(Icons.pages_outlined)),

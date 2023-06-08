@@ -18,7 +18,7 @@ class ReviewSummary extends StatelessWidget {
             ),
             title: DefaultText(
                 text: Get.arguments == "booking" ? "Booking Details" : "Review Summary",
-                style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 20)),
+                style: Get.theme.textTheme.headlineSmall!.copyWith(fontSize: 20)),
           ),
           Expanded(
             child: SingleChildScrollView(
@@ -47,7 +47,7 @@ class ReviewSummary extends StatelessWidget {
                     plugType: Icon(
                       Icons.group_work_outlined,
                       size: 30,
-                      color: Theme.of(context).textTheme.titleMedium!.color,
+                      color: Get.theme.textTheme.titleMedium!.color,
                     ),
                   ),
                   GetGrayDetailsContainer(
@@ -80,7 +80,7 @@ class ReviewSummary extends StatelessWidget {
                                 "charging station",
                             maxLines: 3,
                             textAlign: TextAlign.start,
-                            style: Theme.of(context)
+                            style: Get.theme
                                 .textTheme
                                 .titleMedium!
                                 .copyWith(color: kSecondaryTextColor, fontWeight: FontWeight.w500),
@@ -108,15 +108,14 @@ class ReviewSummary extends StatelessWidget {
                     showCancelDialog(
                       context,
                       "Booking Successful!",
-                      "You can view booking details on the My Booking "
-                          "menu",
+                      "You can view booking details on the My Booking menu",
                       () => Get.offNamedUntil(RouteConst.kPreHome, (route) => false, arguments: 1),
                     );
                   }
                 },
                 child: DefaultText(
                   text: Get.arguments == "booking" ? "Cancel Booking" : "Continue",
-                  style: Theme.of(context)
+                  style: Get.theme
                       .textTheme
                       .labelLarge!
                       .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
@@ -147,7 +146,7 @@ class ReviewSummary extends StatelessWidget {
                 children: [
                   DefaultText(
                     text: "Cancel Booking",
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    style: Get.theme.textTheme.titleLarge!.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Colors.red,
                         ),
@@ -156,7 +155,7 @@ class ReviewSummary extends StatelessWidget {
                   DefaultText(
                     text: "Are you sure you want to cancel the booking?",
                     maxLines: 2,
-                    style: Theme.of(context).textTheme.titleLarge!,
+                    style: Get.theme.textTheme.titleLarge!,
                   ),
                   WidgetConst.kHeightSpacer(),
                   Row(
@@ -168,7 +167,7 @@ class ReviewSummary extends StatelessWidget {
                             onPressed: () => Get.back(),
                             text: "No,Don't Cancel",
                             elevation: 0,
-                            style: Theme.of(context)
+                            style: Get.theme
                                 .textTheme
                                 .labelLarge!
                                 .copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
@@ -193,7 +192,7 @@ class ReviewSummary extends StatelessWidget {
                             },
                             child: DefaultText(
                               text: "Yes, Cancel",
-                              style: Theme.of(context)
+                              style: Get.theme
                                   .textTheme
                                   .labelLarge!
                                   .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
@@ -216,7 +215,7 @@ class ReviewSummary extends StatelessWidget {
       context: context,
       customDialogUI: CustomDialogUI(
         logoImage:
-            Theme.of(context).brightness == Brightness.light ? StringsConst.kDoneBubble : StringsConst.kDoneBubbleDark,
+            Get.theme.brightness == Brightness.light ? StringsConst.kDoneBubble : StringsConst.kDoneBubbleDark,
         title: title,
         subTitle: subtitle,
         lastImage: "",
@@ -228,7 +227,7 @@ class ReviewSummary extends StatelessWidget {
             onPressed: onTap,
             child: DefaultText(
               text: "OK",
-              style: Theme.of(context)
+              style: Get.theme
                   .textTheme
                   .labelLarge!
                   .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
@@ -244,7 +243,7 @@ class ReviewSummary extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
       child: DefaultText(
         text: title,
-        style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
+        style: Get.theme.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
         textAlign: TextAlign.start,
       ),
     );
@@ -266,7 +265,7 @@ class GetGrayDetailsContainer extends StatelessWidget {
     return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: kFifthTextColor,
+          color: Get.theme.brightness == Brightness.light ? kFifthTextColor : kDarkSecondaryColor,
           border: Border.all(width: 0.4, color: kSecondaryTextColor),
         ),
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -281,11 +280,11 @@ class GetGrayDetailsContainer extends StatelessWidget {
               children: [
                 DefaultText(
                   text: item[index][1],
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(color: kSecondaryTextColor),
+                  style: Get.theme.textTheme.titleMedium!.copyWith(color: kSecondaryTextColor),
                 ),
                 DefaultText(
                   text: item[index][2],
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
+                  style: Get.theme.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
                 )
               ],
             );

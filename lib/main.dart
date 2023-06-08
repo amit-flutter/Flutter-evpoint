@@ -5,11 +5,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) => Get.put(FirebaseAuthController()));
-  runApp(const MyApp());
+  bool isDark = await Preferences.isDark();
+  runApp(MyApp(isDark: isDark));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, required this.isDark});
+
+  final bool isDark;
 
   // This widget is the root of your application.
   @override
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
       getPages: RouteConst().routePages,
       theme: kLightTheme,
       darkTheme: kDarkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
     );
   }
 }

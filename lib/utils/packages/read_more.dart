@@ -115,7 +115,7 @@ class ReadMoreTextState extends State<ReadMoreText> {
     final overflow = defaultTextStyle.overflow;
     final locale = widget.locale ?? Localizations.maybeLocaleOf(context);
 
-    final colorClickableText = widget.colorClickableText ?? Theme.of(context).colorScheme.secondary;
+    final colorClickableText = widget.colorClickableText ?? Get.theme.colorScheme.secondary;
     final defaultLessStyle = widget.lessStyle ?? effectiveTextStyle?.copyWith(color: colorClickableText);
     final defaultMoreStyle = widget.moreStyle ?? effectiveTextStyle?.copyWith(color: colorClickableText);
     final defaultDelimiterStyle = widget.delimiterStyle ?? effectiveTextStyle;

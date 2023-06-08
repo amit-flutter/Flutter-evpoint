@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Image.asset(StringsConst.kImgAppIcon, width: 150, height: 150),
                 DefaultText(
                   text: StringsConst.kTextEvPoint,
-                  style: Theme.of(context).textTheme.headlineSmall!,
+                  style: Get.theme.textTheme.headlineSmall!,
                 )
               ],
             ),

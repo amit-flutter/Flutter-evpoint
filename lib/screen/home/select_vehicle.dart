@@ -17,7 +17,7 @@ class SelectVehicle extends StatelessWidget {
               icon: const Icon(Icons.arrow_back, size: 34),
             ),
             title: DefaultText(
-                text: "Select Your Vehicle", style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 20)),
+                text: "Select Your Vehicle", style: Get.theme.textTheme.headlineSmall!.copyWith(fontSize: 20)),
             actions: [
               IconButton(
                 constraints: const BoxConstraints(minWidth: 70),
@@ -46,7 +46,7 @@ class SelectVehicle extends StatelessWidget {
               onPressed: () => Get.toNamed(RouteConst.kSelectCharger),
               child: DefaultText(
                 text: "Continue",
-                style: Theme.of(context)
+                style: Get.theme
                     .textTheme
                     .labelLarge!
                     .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
@@ -79,7 +79,7 @@ class SelectVehicleCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: kFifthTextColor,
+        color: Get.theme.brightness == Brightness.light ? kFifthTextColor : kDarkSecondaryColor,
         border: Border.all(width: 0.4, color: kSecondaryTextColor),
       ),
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -96,12 +96,12 @@ class SelectVehicleCard extends StatelessWidget {
                 children: [
                   DefaultText(
                     text: carName,
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
+                    style: Get.theme.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
                     textAlign: TextAlign.start,
                   ),
                   DefaultText(
                     text: carDescription,
-                    style: Theme.of(context)
+                    style: Get.theme
                         .textTheme
                         .titleMedium!
                         .copyWith(color: kSecondaryTextColor, fontWeight: FontWeight.w500),

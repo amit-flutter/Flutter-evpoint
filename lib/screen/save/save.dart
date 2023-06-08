@@ -12,9 +12,10 @@ class SaveScreen extends StatelessWidget {
             itemCount: 3,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              return const LocationInfoCard(
-                backgroundColor: kFifthTextColor,
-                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              return LocationInfoCard(
+                backgroundColor:
+                    Get.theme.brightness == Brightness.light ? kFifthTextColor : kDarkSecondaryColor,
+                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               );
             }),
       ),

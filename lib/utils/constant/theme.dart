@@ -39,6 +39,8 @@ ThemeData kLightTheme = ThemeData(
   ),
   textTheme: const TextTheme(
     bodyMedium: StyleConst.kDefaultTextStyle,
+    titleLarge: TextStyle(color: kPrimaryTextColor),
+    titleMedium: TextStyle(color: kPrimaryTextColor),
     headlineMedium: TextStyle(color: kPrimaryTextColor, fontWeight: FontWeight.w600),
     headlineSmall: TextStyle(color: kPrimaryTextColor, fontWeight: FontWeight.bold),
     labelLarge: TextStyle(color: kPrimaryTextColor),
@@ -108,7 +110,7 @@ ThemeData kDarkTheme = ThemeData(
   scaffoldBackgroundColor: kDarkScaffoldBackgroundColor,
   brightness: Brightness.dark,
   dividerColor: kDarkSecondaryTextColor,
-  iconTheme: const IconThemeData(color: kDarkScaffoldBackgroundColor),
+  iconTheme: const IconThemeData(color: kDarkPrimaryTextColor),
   radioTheme: RadioThemeData(fillColor: MaterialStateColor.resolveWith((states) => kPrimaryColor)),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: kDarkScaffoldBackgroundColor,
@@ -129,6 +131,8 @@ ThemeData kDarkTheme = ThemeData(
   ),
   textTheme: const TextTheme(
     bodyMedium: StyleConst.kDefaultTextStyle,
+    titleLarge: TextStyle(color: kDarkPrimaryTextColor),
+    titleMedium: TextStyle(color: kDarkPrimaryTextColor),
     headlineMedium: TextStyle(color: kDarkPrimaryTextColor, fontWeight: FontWeight.w600),
     headlineSmall: TextStyle(color: kDarkPrimaryTextColor, fontWeight: FontWeight.bold),
     labelLarge: TextStyle(color: kDarkPrimaryTextColor),

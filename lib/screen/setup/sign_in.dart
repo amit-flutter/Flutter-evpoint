@@ -15,12 +15,12 @@ class SignInScreen extends StatelessWidget {
             //Title - Message
             DefaultText(
               text: StringsConst.kTextHelloThere,
-              style: Theme.of(context).textTheme.headlineSmall!.copyWith(height: 1.5),
+              style: Get.theme.textTheme.headlineSmall!.copyWith(height: 1.5),
             ),
             WidgetConst.kHeightSpacer(),
             DefaultText(
               text: StringsConst.kTextSignInMessage,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
+              style: Get.theme.textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
               textAlign: TextAlign.start,
               maxLines: 3,
             ),
@@ -29,7 +29,7 @@ class SignInScreen extends StatelessWidget {
             //Phone Number
             DefaultText(
               text: StringsConst.kTextPhoneNumber,
-              style: Theme.of(context).textTheme.labelLarge!.copyWith(height: 1.7, fontWeight: FontWeight.bold),
+              style: Get.theme.textTheme.labelLarge!.copyWith(height: 1.7, fontWeight: FontWeight.bold),
               textAlign: TextAlign.start,
               maxLines: 3,
             ),
@@ -53,7 +53,7 @@ class SignInScreen extends StatelessWidget {
                 WidgetConst.kWidthSpacer(),
                 DefaultText(
                   text: StringsConst.kTextRememberMe,
-                  style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w500),
+                  style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w500),
                   textAlign: TextAlign.start,
                   maxLines: 3,
                 ),
@@ -66,7 +66,7 @@ class SignInScreen extends StatelessWidget {
             Center(
               child: DefaultText(
                 text: StringsConst.kTextCanTAccessYourPhone,
-                style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w400),
+                style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w400),
               ),
             ),
             WidgetConst.kHeightSpacer(heightMultiplier: 2),
@@ -74,7 +74,7 @@ class SignInScreen extends StatelessWidget {
               child: DefaultText(
                 text: StringsConst.kTextUserEmailTOSignIn,
                 style:
-                    Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
+                    Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
               ),
             ),
             WidgetConst.kHeightSpacer(heightMultiplier: 3),
@@ -87,7 +87,7 @@ class SignInScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: DefaultText(
                     text: StringsConst.kTextOrContinueWith,
-                    style: Theme.of(context).textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w400),
+                    style: Get.theme.textTheme.labelLarge!.copyWith(fontWeight: FontWeight.w400),
                   ),
                 ),
                 const Expanded(child: Divider()),
@@ -109,9 +109,9 @@ class SignInScreen extends StatelessWidget {
                       height: 50,
                       child: CustomOutlineButton(
                         backgroundColor:
-                            Theme.of(context).brightness == Brightness.light ? Colors.transparent : kDarkSecondaryColor,
+                            Get.theme.brightness == Brightness.light ? Colors.transparent : kDarkSecondaryColor,
                         onPressed: () => FirebaseAuthController.instance.socialLogin(socialName),
-                        child: Theme.of(context).brightness == Brightness.light
+                        child: Get.theme.brightness == Brightness.light
                             ? Image.asset('assets/images/$socialName.png', height: 25)
                             : socialName != "Apple"
                                 ? Image.asset('assets/images/$socialName.png', height: 25)
@@ -136,7 +136,7 @@ class SignInScreen extends StatelessWidget {
                 },
                 text: "Sign In",
                 backgroundColor: kPrimaryColor,
-                style: Theme.of(context).textTheme.labelLarge!.copyWith(color: kThirdTextColor),
+                style: Get.theme.textTheme.labelLarge!.copyWith(color: kThirdTextColor),
               ),
             )
           ]),

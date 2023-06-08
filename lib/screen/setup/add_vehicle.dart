@@ -14,21 +14,21 @@ class AddVehicleScreen extends StatelessWidget {
             //Title - Message
             DefaultText(
               text: StringsConst.kTextAddVehicleTitle,
-              style: Theme.of(context).textTheme.headlineSmall!.copyWith(height: 1.5),
+              style: Get.theme.textTheme.headlineSmall!.copyWith(height: 1.5),
               maxLines: 3,
               textAlign: TextAlign.start,
             ),
             WidgetConst.kHeightSpacer(),
             DefaultText(
               text: StringsConst.kTextAddVehicleMessage,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
+              style: Get.theme.textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
               textAlign: TextAlign.start,
               maxLines: 3,
             ),
 
             //Full Name
             WidgetConst.kHeightSpacer(heightMultiplier: 4),
-            Image.asset(Theme.of(context).brightness == Brightness.light
+            Image.asset(Get.theme.brightness == Brightness.light
                 ? StringsConst.kAddVehicle
                 : StringsConst.kAddVehicleDark),
 
@@ -46,8 +46,8 @@ class AddVehicleScreen extends StatelessWidget {
                       onPressed: () => Get.offNamed(RouteConst.kLogin),
                       elevation: 0,
                       text: StringsConst.kTextAddLater,
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                          color: Theme.of(context).brightness == Brightness.dark ? kThirdTextColor : kPrimaryColor),
+                      style: Get.theme.textTheme.labelLarge!.copyWith(
+                          color: Get.theme.brightness == Brightness.dark ? kThirdTextColor : kPrimaryColor),
                     ),
                   ),
                 ),
@@ -56,15 +56,15 @@ class AddVehicleScreen extends StatelessWidget {
                     height: 50,
                     child: CustomElevatedButton(
                       onPressed: () {
-                        String? error = FirebaseAuthController.instance
-                            .createUserWithEmailAndPassword("a@mailinator.com", "Test@123") as String?;
-                        if (error != null) {
-                          Get.snackbar("Error", error);
-                        }
+                        // String? error = FirebaseAuthController.instance
+                        //     .createUserWithEmailAndPassword("a@mailinator.com", "Test@123") as String?;
+                        // if (error != null) {
+                        //   Get.snackbar("Error", error);
+                        // }
                       },
                       text: StringsConst.kTextAddVehicle,
                       backgroundColor: kPrimaryColor,
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(color: kThirdTextColor),
+                      style: Get.theme.textTheme.labelLarge!.copyWith(color: kThirdTextColor),
                     ),
                   ),
                 ),

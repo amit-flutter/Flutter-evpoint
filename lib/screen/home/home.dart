@@ -13,8 +13,8 @@ class _PreHomeScreenState extends State<PreHomeScreen> {
     HomeScreen(),
     SaveScreen(),
     MyBookingScreen(),
-    Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-    Text('Profile Page', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+    WalletScreen(),
+    AccountScreen(),
   ];
 
   void _onItemTapped(int index) => setState(() => _selectedIndex = index);

@@ -18,7 +18,7 @@ class SelectPaymentMethod extends StatelessWidget {
             ),
             title: DefaultText(
                 text: "Select Payment Method",
-                style: Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 20)),
+                style: Get.theme.textTheme.headlineSmall!.copyWith(fontSize: 20)),
             actions: [
               IconButton(
                 constraints: const BoxConstraints(minWidth: 70),
@@ -44,9 +44,9 @@ class SelectPaymentMethod extends StatelessWidget {
                             onPressed: () => Get.offNamed(RouteConst.kLogin),
                             text: "+ Add New Payment",
                             elevation: 0,
-                            style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                            style: Get.theme.textTheme.labelLarge!.copyWith(
                                 color:
-                                    Theme.of(context).brightness == Brightness.dark ? kThirdTextColor : kPrimaryColor),
+                                    Get.theme.brightness == Brightness.dark ? kThirdTextColor : kPrimaryColor),
                           ),
                         );
                 }),
@@ -60,7 +60,7 @@ class SelectPaymentMethod extends StatelessWidget {
               onPressed: () => Get.toNamed(RouteConst.kReviewSummary),
               child: DefaultText(
                 text: "Continue",
-                style: Theme.of(context)
+                style: Get.theme
                     .textTheme
                     .labelLarge!
                     .copyWith(fontWeight: FontWeight.bold, color: kScaffoldBackgroundColor),
@@ -93,7 +93,7 @@ class SelectPaymentCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: kFifthTextColor,
+        color: Get.theme.brightness == Brightness.light ? kFifthTextColor : kDarkSecondaryColor,
         border: Border.all(width: 0.4, color: kSecondaryTextColor),
       ),
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -106,7 +106,7 @@ class SelectPaymentCard extends StatelessWidget {
             Expanded(
               child: DefaultText(
                 text: paymentMethodName,
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
+                style: Get.theme.textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.start,
               ),
             ),

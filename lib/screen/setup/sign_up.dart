@@ -15,12 +15,12 @@ class SignUpScreen extends StatelessWidget {
             //Title - Message
             DefaultText(
               text: StringsConst.kTextHelloThere,
-              style: Theme.of(context).textTheme.headlineSmall!.copyWith(height: 1.5),
+              style: Get.theme.textTheme.headlineSmall!.copyWith(height: 1.5),
             ),
             WidgetConst.kHeightSpacer(),
             DefaultText(
               text: StringsConst.kTextSignUpMessage,
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
+              style: Get.theme.textTheme.titleMedium!.copyWith(height: 1.7, fontWeight: FontWeight.normal),
               textAlign: TextAlign.start,
               maxLines: 3,
             ),
@@ -29,7 +29,7 @@ class SignUpScreen extends StatelessWidget {
             //Phone Number
             DefaultText(
               text: StringsConst.kTextPhoneNumber,
-              style: Theme.of(context).textTheme.labelLarge!.copyWith(height: 1.7, fontWeight: FontWeight.bold),
+              style: Get.theme.textTheme.labelLarge!.copyWith(height: 1.7, fontWeight: FontWeight.bold),
               textAlign: TextAlign.start,
               maxLines: 3,
             ),
@@ -56,13 +56,13 @@ class SignUpScreen extends StatelessWidget {
                   child: RichText(
                     maxLines: 3,
                     text: TextSpan(
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(height: 1.7, fontWeight: FontWeight.bold),
+                      style: Get.theme.textTheme.labelLarge!.copyWith(height: 1.7, fontWeight: FontWeight.bold),
                       children: <TextSpan>[
                         const TextSpan(text: 'i afree to EVPouint'),
                         for (String i in [" Public Agreement,", " Terms,", " Privacy Policy"])
                           TextSpan(
                               text: i,
-                              style: Theme.of(context)
+                              style: Get.theme
                                   .textTheme
                                   .labelLarge!
                                   .copyWith(height: 1.5, fontWeight: FontWeight.w600, color: kPrimaryColor),
@@ -91,7 +91,7 @@ class SignUpScreen extends StatelessWidget {
                 },
                 text: "Continue",
                 backgroundColor: kPrimaryColor,
-                style: Theme.of(context).textTheme.labelLarge!.copyWith(color: kThirdTextColor),
+                style: Get.theme.textTheme.labelLarge!.copyWith(color: kThirdTextColor),
               ),
             )
           ]),
